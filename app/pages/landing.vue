@@ -12,7 +12,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/>
             </svg>
           </div>
-          <span class="nav-logo__text">Glow Up Gestao</span>
+          <span class="nav-logo__text">Glow Up Studio</span>
         </NuxtLink>
 
         <!-- Desktop links -->
@@ -204,7 +204,7 @@
                     <svg style="width:13px;height:13px;color:white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
                   </div>
                   <div class="relative">
-                    <p style="font-size:7px; font-weight:700; color:rgba(255,210,240,0.8); letter-spacing:0.1em; text-transform:uppercase; margin:0 0 2px;">Glow Up Gestão</p>
+                    <p style="font-size:7px; font-weight:700; color:rgba(255,210,240,0.8); letter-spacing:0.1em; text-transform:uppercase; margin:0 0 2px;">Glow Up Studio</p>
                     <p style="font-size:13px; font-weight:900; color:white; margin:0; line-height:1.1;">Olá, Ana! 👋</p>
                     <p style="font-size:7px; color:rgba(255,220,245,0.7); margin:3px 0 0;">Domingo, 20 de abril de 2026</p>
                   </div>
@@ -454,9 +454,9 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/>
             </svg>
           </div>
-          <span class="text-sm font-black" style="background: linear-gradient(135deg, #ec4899, #c026d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text">Glow Up Gestao</span>
+          <span class="text-sm font-black" style="background: linear-gradient(135deg, #ec4899, #c026d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text">Glow Up Studio</span>
         </div>
-        <p class="text-xs text-rose-900/35 text-center">2026 Glow Up Gestao. Feito com amor para empreendedoras da beleza.</p>
+        <p class="text-xs text-rose-900/35 text-center">2026 Glow Up Studio. Feito com amor para empreendedoras da beleza.</p>
         <NuxtLink to="/login" class="text-xs font-semibold text-pink-400 hover:text-pink-600 transition-colors">Acessar plataforma</NuxtLink>
       </div>
     </footer>
@@ -564,7 +564,7 @@ const plans = [
 ]
 
 const faqs = [
-  { q: 'Preciso instalar alguma coisa?',         a: 'Nao! O Glow Up Gestao e 100% online, funciona em qualquer celular ou computador, sem instalacao.' },
+  { q: 'Preciso instalar alguma coisa?',         a: 'Nao! O Glow Up Studio e 100% online, funciona em qualquer celular ou computador, sem instalacao.' },
   { q: 'Meus dados ficam seguros?',              a: 'Sim. Cada studio tem seus dados completamente isolados. Usamos criptografia e backups automaticos.' },
   { q: 'Posso cancelar quando quiser?',          a: 'Sim, sem fidelidade e sem multa. Cancele quando quiser pelo painel ou pelo WhatsApp de suporte.' },
   { q: 'Quantas funcionárias posso adicionar?',  a: 'No plano Essencial o acesso é para 1 usuária. No Pro e Elite, adicione toda a equipe sem limite.' },

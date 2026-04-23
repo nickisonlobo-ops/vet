@@ -9,8 +9,8 @@
         </svg>
       </div>
       <div class="text-center">
-        <h1 class="text-2xl font-black tracking-tight" style="background: linear-gradient(135deg, #ec4899, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text">Glow Up Gestão</h1>
-        <p class="text-sm text-gray-500 mt-0.5">Plataforma de Gestão</p>
+        <h1 class="text-2xl font-black tracking-tight" style="background: linear-gradient(135deg, #ec4899, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text">Glow Up Studio</h1>
+        <p class="text-sm text-gray-500 mt-0.5">Sua plataforma de beleza</p>
       </div>
     </div>
 
@@ -88,7 +88,7 @@
         v-model="register.nomeEmpresa"
         label="Nome da empresa"
         type="text"
-        placeholder="Ex: Auto Flow, Studio X..."
+        placeholder="Nome do seu studio"
         :error="registerErrors.nomeEmpresa"
         required
       />

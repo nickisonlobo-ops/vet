@@ -174,131 +174,329 @@
       </div>
     </section>
 
-    <!-- MOBILE SHOWCASE -->
+    <!-- DEVICE SHOWCASE -->
     <section class="py-20 sm:py-28 relative overflow-hidden" style="background: linear-gradient(180deg, #ccfbf1 0%, #ecfeff 100%)">
       <div class="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full opacity-20 blur-[100px] pointer-events-none" style="background: radial-gradient(circle, #5eead4, transparent)"></div>
       <div class="absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-20 blur-[100px] pointer-events-none" style="background: radial-gradient(circle, #22d3ee, transparent)"></div>
 
-      <div class="relative max-w-6xl mx-auto px-6 sm:px-10">
+      <div class="relative max-w-7xl mx-auto px-6 sm:px-10">
         <div class="text-center mb-16">
           <p class="section-label">Acesso em qualquer lugar</p>
-          <h2 class="text-4xl sm:text-5xl font-black mb-3" style="background: linear-gradient(135deg, #0d9488, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Na palma da sua mão</h2>
-          <p class="text-teal-900/50 max-w-lg mx-auto">Gerencie sua clínica de onde estiver. Celular, tablet ou computador — tudo sincronizado em tempo real.</p>
+          <h2 class="text-4xl sm:text-5xl font-black mb-3" style="background: linear-gradient(135deg, #0d9488, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Desktop ou celular, tudo em um só lugar</h2>
+          <p class="text-teal-900/50 max-w-lg mx-auto">Gerencie sua clínica de onde estiver. Tudo sincronizado em tempo real.</p>
         </div>
 
-        <div class="flex flex-col items-center gap-16">
+        <!-- Desktop + Phone side by side -->
+        <div class="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-8">
 
-          <!-- Phone mockup -->
+          <!-- ── DESKTOP MOCKUP — Visão Geral ── -->
+          <div class="relative flex-shrink-0 w-full max-w-2xl lg:max-w-none" style="flex:1;">
+            <div class="relative" style="border-radius:16px 16px 0 0; border:6px solid #1e293b; border-bottom:0; background:#0f172a; box-shadow: 0 32px 64px rgba(0,0,0,0.22);">
+              <!-- Browser bar -->
+              <div style="height:32px; background:#1e293b; border-radius:10px 10px 0 0; display:flex; align-items:center; padding:0 12px; gap:6px;">
+                <div style="width:10px;height:10px;border-radius:999px;background:#ef4444;opacity:.8;"></div>
+                <div style="width:10px;height:10px;border-radius:999px;background:#f59e0b;opacity:.8;"></div>
+                <div style="width:10px;height:10px;border-radius:999px;background:#22c55e;opacity:.8;"></div>
+                <div style="flex:1;margin-left:10px;height:18px;border-radius:999px;background:rgba(255,255,255,0.08);display:flex;align-items:center;padding:0 10px;">
+                  <span style="font-size:9px;color:rgba(255,255,255,0.4);font-family:monospace;">app.clinicavet.com.br</span>
+                </div>
+              </div>
+              <!-- Screen content -->
+              <div style="background:#f1f5f9; display:flex; height:380px; overflow:hidden; border-radius:0 0 2px 2px;">
+                <!-- Sidebar esquerda — igual ao sistema real -->
+                <div style="width:52px; background:#0f172a; display:flex; flex-direction:column; align-items:center; padding:12px 0; gap:4px; flex-shrink:0;">
+                  <!-- Logo -->
+                  <div style="width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#0d9488,#0891b2);display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+                    <svg style="width:16px;height:16px;color:white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="7" cy="4" r="2" fill="white" stroke="none"/><circle cx="17" cy="4" r="2" fill="white" stroke="none"/><circle cx="4" cy="10" r="2" fill="white" stroke="none"/><circle cx="20" cy="10" r="2" fill="white" stroke="none"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 22c-4 0-7-3-7-7 0-2 1-4 2.5-5.5 1.5-1.5 3-2 4.5-2s3 .5 4.5 2C18 11 19 13 19 15c0 4-3 7-7 7z"/></svg>
+                  </div>
+                  <!-- Nav icons -->
+                  <div style="width:36px;height:36px;border-radius:10px;background:rgba(13,148,136,0.2);display:flex;align-items:center;justify-content:center;">
+                    <svg style="width:16px;height:16px;color:#2dd4bf" fill="currentColor" viewBox="0 0 24 24"><path d="M11.47 3.841a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.061l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 101.061 1.06l8.69-8.689z"/><path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"/></svg>
+                  </div>
+                  <div style="width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;opacity:0.4;">
+                    <svg style="width:16px;height:16px;color:#94a3b8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75"/></svg>
+                  </div>
+                  <div style="width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;opacity:0.4;">
+                    <svg style="width:16px;height:16px;color:#94a3b8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                  </div>
+                  <div style="width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;opacity:0.4;">
+                    <svg style="width:16px;height:16px;color:#94a3b8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>
+                  </div>
+                  <div style="width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;opacity:0.4;">
+                    <svg style="width:16px;height:16px;color:#94a3b8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75"/></svg>
+                  </div>
+                </div>
+                <!-- Main content -->
+                <div style="flex:1; overflow:hidden; display:flex; flex-direction:column;">
+                  <!-- Page header — igual ao real -->
+                  <div style="position:relative; overflow:hidden; background:linear-gradient(135deg,#0d9488,#0891b2); padding:14px 16px 14px; flex-shrink:0;">
+                    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(255,255,255,0.12),transparent 60%);"></div>
+                    <div style="position:relative; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+                      <div style="display:flex; align-items:center; gap:10px;">
+                        <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                          <svg style="width:18px;height:18px;color:white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+                        </div>
+                        <div>
+                          <p style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;margin:0;">Clínica</p>
+                          <p style="font-size:16px;font-weight:900;color:white;margin:0;line-height:1.1;">Prontuários</p>
+                          <p style="font-size:8px;color:rgba(255,255,255,0.6);margin:3px 0 0;">24 registros exibidos</p>
+                        </div>
+                      </div>
+                      <div style="display:flex;gap:6px;">
+                        <div style="display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:6px 10px;">
+                          <svg style="width:11px;height:11px;color:white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"/></svg>
+                          <span style="font-size:9px;font-weight:700;color:white;">Filtros</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:5px;background:white;border-radius:8px;padding:6px 10px;">
+                          <svg style="width:11px;height:11px;color:#0d9488" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+                          <span style="font-size:9px;font-weight:800;color:#0d9488;">Novo Prontuário</span>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Stats row -->
+                    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px;position:relative;">
+                      <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;">
+                        <p style="font-size:7px;font-weight:700;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.08em;margin:0;">Total</p>
+                        <p style="font-size:16px;font-weight:900;color:white;margin:2px 0 0;line-height:1;">24</p>
+                        <p style="font-size:7px;color:rgba(255,255,255,0.45);margin:2px 0 0;">registros</p>
+                      </div>
+                      <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 8px;">
+                        <p style="font-size:7px;font-weight:700;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.08em;margin:0;">Consultas</p>
+                        <p style="font-size:16px;font-weight:900;color:white;margin:2px 0 0;line-height:1;">18</p>
+                        <p style="font-size:7px;color:rgba(255,255,255,0.45);margin:2px 0 0;">consultas</p>
+                      </div>
+                      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:6px 8px;">
+                        <p style="font-size:7px;font-weight:700;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.08em;margin:0;">Vacinas</p>
+                        <p style="font-size:16px;font-weight:900;color:white;margin:2px 0 0;line-height:1;">4</p>
+                        <p style="font-size:7px;color:rgba(255,255,255,0.45);margin:2px 0 0;">registros</p>
+                      </div>
+                      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:6px 8px;">
+                        <p style="font-size:7px;font-weight:700;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.08em;margin:0;">Últ. 30 dias</p>
+                        <p style="font-size:16px;font-weight:900;color:white;margin:2px 0 0;line-height:1;">11</p>
+                        <p style="font-size:7px;color:rgba(255,255,255,0.45);margin:2px 0 0;">registros</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Prontuário list -->
+                  <div style="flex:1; overflow:hidden; background:#f1f5f9; padding:10px 12px; display:flex; flex-direction:column; gap:6px;">
+                    <!-- Search bar -->
+                    <div style="display:flex;align-items:center;gap:6px;background:white;border:1px solid #e2e8f0;border-radius:8px;padding:6px 10px;margin-bottom:2px;">
+                      <svg style="width:11px;height:11px;color:#94a3b8;flex-shrink:0;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+                      <span style="font-size:9px;color:#94a3b8;">Buscar por animal, tutor ou veterinário…</span>
+                    </div>
+                    <!-- Row 1 -->
+                    <div style="background:white;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+                      <div style="height:3px;background:linear-gradient(90deg,#0d9488,#0891b2);"></div>
+                      <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;">
+                        <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#0d9488,#0891b2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;font-weight:900;color:white;">R</div>
+                        <div style="flex:1;min-width:0;">
+                          <div style="display:flex;align-items:center;gap:5px;">
+                            <p style="font-size:10px;font-weight:800;color:#0f172a;margin:0;">Rex</p>
+                            <span style="font-size:7px;font-weight:700;background:#f0fdfa;color:#0d9488;border:1px solid #99f6e4;border-radius:4px;padding:1px 5px;">Consulta</span>
+                          </div>
+                          <p style="font-size:8px;color:#64748b;margin:2px 0 0;">Golden Retriever · Tutor: Carlos Mendes</p>
+                        </div>
+                        <div style="text-align:right;flex-shrink:0;">
+                          <p style="font-size:8px;font-weight:700;color:#0f766e;margin:0;">Dra. Ana Lima</p>
+                          <p style="font-size:7px;color:#94a3b8;margin:2px 0 0;">26/04/2026</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Row 2 -->
+                    <div style="background:white;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+                      <div style="height:3px;background:linear-gradient(90deg,#059669,#0d9488);"></div>
+                      <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;">
+                        <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#059669,#0d9488);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;font-weight:900;color:white;">M</div>
+                        <div style="flex:1;min-width:0;">
+                          <div style="display:flex;align-items:center;gap:5px;">
+                            <p style="font-size:10px;font-weight:800;color:#0f172a;margin:0;">Mia</p>
+                            <span style="font-size:7px;font-weight:700;background:#f0fdf4;color:#059669;border:1px solid #86efac;border-radius:4px;padding:1px 5px;">Vacina</span>
+                          </div>
+                          <p style="font-size:8px;color:#64748b;margin:2px 0 0;">Siamesa · Tutor: Fernanda Costa</p>
+                        </div>
+                        <div style="text-align:right;flex-shrink:0;">
+                          <p style="font-size:8px;font-weight:700;color:#0f766e;margin:0;">Dr. Bruno Vet</p>
+                          <p style="font-size:7px;color:#94a3b8;margin:2px 0 0;">25/04/2026</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Row 3 -->
+                    <div style="background:white;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+                      <div style="height:3px;background:linear-gradient(90deg,#0891b2,#0e7490);"></div>
+                      <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;">
+                        <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#0891b2,#0e7490);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;font-weight:900;color:white;">B</div>
+                        <div style="flex:1;min-width:0;">
+                          <div style="display:flex;align-items:center;gap:5px;">
+                            <p style="font-size:10px;font-weight:800;color:#0f172a;margin:0;">Bob</p>
+                            <span style="font-size:7px;font-weight:700;background:#ecfeff;color:#0891b2;border:1px solid #a5f3fc;border-radius:4px;padding:1px 5px;">Retorno</span>
+                          </div>
+                          <p style="font-size:8px;color:#64748b;margin:2px 0 0;">Bulldog · Tutor: Paulo Ramos</p>
+                        </div>
+                        <div style="text-align:right;flex-shrink:0;">
+                          <p style="font-size:8px;font-weight:700;color:#0f766e;margin:0;">Dra. Ana Lima</p>
+                          <p style="font-size:7px;color:#94a3b8;margin:2px 0 0;">24/04/2026</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Monitor stand -->
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div style="width:100%;height:8px;background:#1e293b;border-radius:0 0 4px 4px;border:6px solid #1e293b;border-top:0;"></div>
+              <div style="width:60px;height:20px;background:#1e293b;border-radius:0 0 6px 6px;"></div>
+              <div style="width:100px;height:6px;background:#334155;border-radius:999px;margin-top:2px;"></div>
+            </div>
+            <!-- Label -->
+            <div class="text-center mt-4">
+              <span class="inline-flex items-center gap-2 text-xs font-bold text-teal-700 bg-teal-50 border border-teal-200 rounded-full px-4 py-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8M12 17v4"/></svg>
+                Desktop — Prontuários
+              </span>
+            </div>
+            <!-- Glow -->
+            <div class="absolute -z-10" style="top:10%;left:10%;right:10%;bottom:0;filter:blur(60px);opacity:0.35;background:radial-gradient(circle, #0d9488, #0891b2);"></div>
+          </div>
+
+          <!-- ── PHONE MOCKUP — Prontuário ── -->
           <div class="relative flex-shrink-0">
             <!-- Phone frame -->
-            <div class="relative" style="width:260px; height:540px; border-radius:44px; border:7px solid #1a0a1e; background:#f3f4f6; box-shadow: 0 32px 64px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.08) inset;">
+            <div class="relative" style="width:240px; height:500px; border-radius:44px; border:7px solid #1a0a1e; background:#f3f4f6; box-shadow: 0 32px 64px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.08) inset;">
               <!-- Screen -->
               <div class="absolute flex flex-col" style="inset:0; border-radius:38px; overflow:hidden; background:#f3f4f6;">
-
-                <!-- App header — espelho do sistema real -->
-                <div class="relative flex-shrink-0" style="background:linear-gradient(135deg,#0d9488,#0891b2); padding:12px 12px 12px 12px; min-height:110px;">
-                  <!-- Dynamic island dentro da tela -->
-                  <div style="display:flex; justify-content:center; margin-bottom:10px;">
-                    <div style="width:72px; height:18px; border-radius:999px; background:#1a0a1e;"></div>
+                <!-- Header prontuário -->
+                <div class="relative flex-shrink-0" style="background:linear-gradient(135deg,#0d9488,#0891b2); padding:10px 10px 10px;">
+                  <div style="display:flex; justify-content:center; margin-bottom:8px;">
+                    <div style="width:64px; height:16px; border-radius:999px; background:#1a0a1e;"></div>
                   </div>
-                  <!-- radial highlight igual ao sistema -->
                   <div class="absolute" style="inset:0; border-radius:inherit; background:radial-gradient(ellipse at top right, rgba(255,255,255,0.18), transparent 65%);"></div>
-                  <!-- Logo badge -->
-                  <div class="absolute" style="top:10px; right:10px; width:26px; height:26px; border-radius:8px; background:rgba(255,255,255,0.15); backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center;">
-                    <svg style="width:13px;height:13px;color:white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
-                  </div>
-                  <div class="relative">
-                    <p style="font-size:7px; font-weight:700; color:rgba(255,210,240,0.8); letter-spacing:0.1em; text-transform:uppercase; margin:0 0 2px;">Clínica Vet</p>
-                    <p style="font-size:13px; font-weight:900; color:white; margin:0; line-height:1.1;">Olá, Ana! 👋</p>
-                    <p style="font-size:7px; color:rgba(255,220,245,0.7); margin:3px 0 0;">Domingo, 20 de abril de 2026</p>
-                  </div>
-                  <!-- Stats row — igual ao sistema -->
-                  <div style="display:flex; gap:5px; margin-top:10px; position:relative;">
-                    <div style="flex:1; background:rgba(255,255,255,0.13); backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:6px 5px; text-align:center;">
-                      <p style="font-size:7px; font-weight:700; color:rgba(255,200,235,0.9); letter-spacing:0.05em; margin:0; text-transform:uppercase;">Agenda</p>
-                      <p style="font-size:14px; font-weight:900; color:white; margin:1px 0 0; line-height:1;">8</p>
+                  <!-- Título -->
+                  <div class="relative" style="display:flex;align-items:center;gap:7px;margin-bottom:8px;">
+                    <div style="width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;">
+                      <svg style="width:14px;height:14px;color:white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>
                     </div>
-                    <div style="flex:1; background:rgba(255,255,255,0.13); backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:6px 5px; text-align:center;">
-                      <p style="font-size:7px; font-weight:700; color:rgba(255,200,235,0.9); letter-spacing:0.05em; margin:0; text-transform:uppercase;">Receita</p>
-                      <p style="font-size:11px; font-weight:900; color:white; margin:1px 0 0; line-height:1;">R$940</p>
+                    <div>
+                      <p style="font-size:7px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;margin:0;">Clínica</p>
+                      <p style="font-size:13px;font-weight:900;color:white;margin:0;line-height:1.1;">Prontuários</p>
                     </div>
-                    <div style="flex:1; background:rgba(255,255,255,0.13); backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:6px 5px; text-align:center;">
-                      <p style="font-size:7px; font-weight:700; color:rgba(255,200,235,0.9); letter-spacing:0.05em; margin:0; text-transform:uppercase;">Livres</p>
-                      <p style="font-size:14px; font-weight:900; color:white; margin:1px 0 0; line-height:1;">2</p>
+                    <div style="margin-left:auto;background:white;border-radius:7px;padding:4px 7px;display:flex;align-items:center;gap:4px;">
+                      <svg style="width:9px;height:9px;color:#0d9488" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+                      <span style="font-size:8px;font-weight:800;color:#0d9488;">Novo</span>
+                    </div>
+                  </div>
+                  <!-- Mini stats -->
+                  <div class="relative" style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;">
+                    <div style="background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.1);border-radius:7px;padding:4px 3px;text-align:center;">
+                      <p style="font-size:6px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.05em;margin:0;text-transform:uppercase;">Total</p>
+                      <p style="font-size:12px;font-weight:900;color:white;margin:1px 0 0;line-height:1;">24</p>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.1);border-radius:7px;padding:4px 3px;text-align:center;">
+                      <p style="font-size:6px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.05em;margin:0;text-transform:uppercase;">Consultas</p>
+                      <p style="font-size:12px;font-weight:900;color:white;margin:1px 0 0;line-height:1;">18</p>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.08);border-radius:7px;padding:4px 3px;text-align:center;">
+                      <p style="font-size:6px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.05em;margin:0;text-transform:uppercase;">Vacinas</p>
+                      <p style="font-size:12px;font-weight:900;color:white;margin:1px 0 0;line-height:1;">4</p>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.08);border-radius:7px;padding:4px 3px;text-align:center;">
+                      <p style="font-size:6px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.05em;margin:0;text-transform:uppercase;">30 dias</p>
+                      <p style="font-size:12px;font-weight:900;color:white;margin:1px 0 0;line-height:1;">11</p>
                     </div>
                   </div>
                 </div>
 
-                <!-- Body -->
-                <div style="flex:1; overflow:hidden; padding:10px 8px 8px; display:flex; flex-direction:column; gap:7px;">
-                  <!-- Section label -->
-                  <p style="font-size:7px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:rgba(80,30,60,0.4); margin:0;">Próximos atendimentos</p>
-
-                  <!-- Appointment cards — espelho do sistema real -->
-                  <div v-for="appt in mockAppts" :key="appt.name" style="background:white; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); border:1px solid rgba(240,220,235,0.8);">
-                    <!-- Barra colorida no topo igual ao sistema -->
-                    <div style="height:3px;" :style="{ background: appt.accent }"></div>
-                    <div style="display:flex; align-items:center; gap:7px; padding:7px 9px;">
-                      <!-- Avatar -->
-                      <div style="width:26px; height:26px; border-radius:8px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:900; color:white;" :style="{ background: appt.color }">{{ appt.init }}</div>
-                      <div style="flex:1; min-width:0;">
-                        <p style="font-size:9px; font-weight:800; color:#3b0764; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ appt.name }}</p>
-                        <p style="font-size:7px; color:rgba(100,40,80,0.5); margin:1px 0 0;">{{ appt.service }}</p>
+                <!-- Body — lista de prontuários -->
+                <div style="flex:1; overflow:hidden; padding:8px 7px; display:flex; flex-direction:column; gap:5px; background:#f1f5f9;">
+                  <!-- search -->
+                  <div style="display:flex;align-items:center;gap:5px;background:white;border:1px solid #e2e8f0;border-radius:8px;padding:5px 8px;">
+                    <svg style="width:9px;height:9px;color:#94a3b8;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+                    <span style="font-size:7.5px;color:#94a3b8;">Buscar prontuário…</span>
+                  </div>
+                  <!-- Card 1 -->
+                  <div style="background:white;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+                    <div style="height:3px;background:linear-gradient(90deg,#0d9488,#0891b2);"></div>
+                    <div style="padding:7px 8px;">
+                      <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                        <div style="width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#0d9488,#0891b2);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:white;flex-shrink:0;">R</div>
+                        <div style="flex:1;min-width:0;">
+                          <div style="display:flex;align-items:center;gap:4px;">
+                            <p style="font-size:9px;font-weight:800;color:#0f172a;margin:0;">Rex</p>
+                            <span style="font-size:6px;font-weight:700;background:#f0fdfa;color:#0d9488;border:1px solid #99f6e4;border-radius:4px;padding:1px 4px;">Consulta</span>
+                          </div>
+                          <p style="font-size:7px;color:#64748b;margin:1px 0 0;">Golden · Tutor: Carlos Mendes</p>
+                        </div>
+                        <p style="font-size:7px;color:#94a3b8;flex-shrink:0;margin:0;">26/04</p>
                       </div>
-                      <!-- Time badge -->
-                      <div style="flex-shrink:0; padding:3px 6px; border-radius:6px; font-size:8px; font-weight:700;" :style="{ background: appt.timeBg, color: appt.timeColor }">{{ appt.time }}</div>
+                      <div style="background:#f8fafc;border-radius:6px;padding:5px 7px;border-left:2px solid #0d9488;">
+                        <p style="font-size:7px;color:#475569;margin:0;line-height:1.4;">Animal apresentou dispneia leve. Prescrito broncodilatador por 7 dias. Retorno em 15 dias.</p>
+                      </div>
+                      <div style="display:flex;align-items:center;gap:4px;margin-top:4px;">
+                        <svg style="width:8px;height:8px;color:#0d9488;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>
+                        <p style="font-size:7px;font-weight:700;color:#0d9488;margin:0;">Dra. Ana Lima</p>
+                      </div>
                     </div>
                   </div>
-
-                  <!-- Motivational banner — igual ao sistema -->
-                  <div style="margin-top:2px; border-radius:10px; padding:7px 9px; background:linear-gradient(90deg,#f0fdfa,#faf0ff); border:1px solid #a5f3fc; display:flex; align-items:center; gap:7px;">
-                    <div style="width:20px; height:20px; border-radius:6px; background:#0d9488; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                      <svg style="width:11px;height:11px;color:white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+                  <!-- Card 2 -->
+                  <div style="background:white;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+                    <div style="height:3px;background:linear-gradient(90deg,#059669,#0d9488);"></div>
+                    <div style="padding:7px 8px;">
+                      <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                        <div style="width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#059669,#0d9488);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:white;flex-shrink:0;">M</div>
+                        <div style="flex:1;min-width:0;">
+                          <div style="display:flex;align-items:center;gap:4px;">
+                            <p style="font-size:9px;font-weight:800;color:#0f172a;margin:0;">Mia</p>
+                            <span style="font-size:6px;font-weight:700;background:#f0fdf4;color:#059669;border:1px solid #86efac;border-radius:4px;padding:1px 4px;">Vacina</span>
+                          </div>
+                          <p style="font-size:7px;color:#64748b;margin:1px 0 0;">Siamesa · Tutor: Fernanda Costa</p>
+                        </div>
+                        <p style="font-size:7px;color:#94a3b8;flex-shrink:0;margin:0;">25/04</p>
+                      </div>
+                      <div style="background:#f8fafc;border-radius:6px;padding:5px 7px;border-left:2px solid #059669;">
+                        <p style="font-size:7px;color:#475569;margin:0;line-height:1.4;">V4 e antirrábica aplicadas. Peso: 4,2kg. Próxima dose em 12 meses.</p>
+                      </div>
+                      <div style="display:flex;align-items:center;gap:4px;margin-top:4px;">
+                        <svg style="width:8px;height:8px;color:#059669;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>
+                        <p style="font-size:7px;font-weight:700;color:#059669;margin:0;">Dr. Bruno Vet</p>
+                      </div>
                     </div>
-                    <p style="font-size:7px; font-weight:600; color:#6b21a8; margin:0; line-height:1.4;">Foco! Você tem 6 atendimentos pela frente hoje. 💪</p>
                   </div>
                 </div>
 
-                <!-- Bottom nav — igual ao sistema (sidebar mobile) -->
-                <div style="flex-shrink:0; border-top:1px solid #f3e8ff; background:white; padding:6px 0; display:flex; align-items:center; justify-content:space-around;">
-                  <div style="display:flex; flex-direction:column; align-items:center; gap:2px;">
-                    <svg style="width:14px;height:14px;color:#0d9488;" fill="currentColor" viewBox="0 0 24 24"><path d="M11.47 3.841a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.061l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 101.061 1.06l8.69-8.689z"/><path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"/></svg>
-                    <span style="font-size:6px; font-weight:700; color:#0d9488;">Início</span>
+                <!-- Bottom nav -->
+                <div style="flex-shrink:0; border-top:1px solid #e2e8f0; background:white; padding:5px 0; display:flex; align-items:center; justify-content:space-around;">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:2px;opacity:0.35;">
+                    <svg style="width:13px;height:13px;color:#6b7280;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955a1.126 1.126 0 011.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+                    <span style="font-size:6px;font-weight:600;color:#9ca3af;">Início</span>
                   </div>
-                  <div style="display:flex; flex-direction:column; align-items:center; gap:2px; opacity:0.35;">
-                    <svg style="width:14px;height:14px;color:#6b7280;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
-                    <span style="font-size:6px; font-weight:600; color:#9ca3af;">Agenda</span>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:2px;opacity:0.35;">
+                    <svg style="width:13px;height:13px;color:#6b7280;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25"/></svg>
+                    <span style="font-size:6px;font-weight:600;color:#9ca3af;">Agenda</span>
                   </div>
-                  <div style="display:flex; flex-direction:column; align-items:center; gap:2px; opacity:0.35;">
-                    <svg style="width:14px;height:14px;color:#6b7280;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-                    <span style="font-size:6px; font-weight:600; color:#9ca3af;">Clientes</span>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+                    <svg style="width:13px;height:13px;color:#0d9488;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375"/></svg>
+                    <span style="font-size:6px;font-weight:700;color:#0d9488;">Prontuário</span>
                   </div>
-                  <div style="display:flex; flex-direction:column; align-items:center; gap:2px; opacity:0.35;">
-                    <svg style="width:14px;height:14px;color:#6b7280;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75"/></svg>
-                    <span style="font-size:6px; font-weight:600; color:#9ca3af;">Caixa</span>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:2px;opacity:0.35;">
+                    <svg style="width:13px;height:13px;color:#6b7280;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75"/></svg>
+                    <span style="font-size:6px;font-weight:600;color:#9ca3af;">Caixa</span>
                   </div>
                 </div>
               </div>
               <!-- Side buttons -->
-              <div class="absolute" style="right:-5px; top:96px; width:4px; height:56px; border-radius:999px; background:#1a0a1e;"></div>
-              <div class="absolute" style="left:-5px; top:82px; width:4px; height:38px; border-radius:999px; background:#1a0a1e;"></div>
-              <div class="absolute" style="left:-5px; top:130px; width:4px; height:38px; border-radius:999px; background:#1a0a1e;"></div>
+              <div class="absolute" style="right:-5px; top:88px; width:4px; height:52px; border-radius:999px; background:#1a0a1e;"></div>
+              <div class="absolute" style="left:-5px; top:76px; width:4px; height:34px; border-radius:999px; background:#1a0a1e;"></div>
+              <div class="absolute" style="left:-5px; top:120px; width:4px; height:34px; border-radius:999px; background:#1a0a1e;"></div>
+            </div>
+            <!-- Label -->
+            <div class="text-center mt-5">
+              <span class="inline-flex items-center gap-2 text-xs font-bold text-teal-700 bg-teal-50 border border-teal-200 rounded-full px-4 py-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 8.25h3m-3 3h3m-3 3h3m-3-12.75h3"/></svg>
+                Celular — Prontuário Digital
+              </span>
             </div>
             <!-- Glow -->
-            <div class="absolute -z-10" style="inset:-24px; border-radius:999px; filter:blur(50px); opacity:0.5; background:radial-gradient(circle, #5eead4, #22d3ee);"></div>
-          </div>
-
-          <!-- Bottom features row -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-3xl" style="margin-top: 2.5rem;">
-            <div v-for="f in mobileFeatures" :key="f.title" class="group flex items-start gap-4 bg-white rounded-2xl p-5 border border-teal-100 hover:border-teal-200 hover:shadow-lg hover:shadow-teal-100/50 transition-all duration-300">
-              <div class="w-11 h-11 shrink-0 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-200" :style="{ background: f.bg }">
-                <svg class="w-5 h-5" :style="{ color: f.color }" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" v-html="f.svg"></svg>
-              </div>
-              <div>
-                <p class="text-sm font-black mb-0.5" style="color: #0f766e">{{ f.title }}</p>
-                <p class="text-xs text-teal-900/50 leading-snug">{{ f.desc }}</p>
-              </div>
-            </div>
+            <div class="absolute -z-10" style="inset:-24px; border-radius:999px; filter:blur(50px); opacity:0.45; background:radial-gradient(circle, #5eead4, #22d3ee);"></div>
           </div>
 
         </div>

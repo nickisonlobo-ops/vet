@@ -9,10 +9,14 @@
         <NuxtLink to="/" class="nav-logo">
           <div class="nav-logo__icon">
             <svg width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/>
+              <circle cx="7" cy="4" r="2" fill="white" stroke="none"/>
+              <circle cx="17" cy="4" r="2" fill="white" stroke="none"/>
+              <circle cx="4" cy="10" r="2" fill="white" stroke="none"/>
+              <circle cx="20" cy="10" r="2" fill="white" stroke="none"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 22c-4 0-7-3-7-7 0-2 1-4 2.5-5.5 1.5-1.5 3-2 4.5-2s3 .5 4.5 2C18 11 19 13 19 15c0 4-3 7-7 7z"/>
             </svg>
           </div>
-          <span class="nav-logo__text">Glow Up Studio</span>
+          <span class="nav-logo__text">Clínica Vet</span>
         </NuxtLink>
 
         <!-- Desktop links -->
@@ -63,20 +67,20 @@
         <!-- Badge -->
         <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-pink-100 border border-pink-200 mb-10 shadow-sm">
           <svg class="w-3.5 h-3.5 text-pink-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
-          <span class="text-xs font-bold text-pink-600 tracking-wider uppercase">Para mulheres que fazem acontecer</span>
+          <span class="text-xs font-bold text-pink-600 tracking-wider uppercase">Para clínicas, pet shops e veterinários</span>
         </div>
 
         <!-- Headline -->
         <h1 class="font-black tracking-tight mb-6" style="line-height: 1.04;">
-          <span class="block" style="font-size: clamp(2.4rem, 6vw, 4.8rem); background: linear-gradient(135deg, #be185d, #7e22ce); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Organize sua agenda,</span>
-          <span class="block" style="font-size: clamp(2.4rem, 6vw, 4.8rem); background: linear-gradient(135deg, #be185d, #7e22ce); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">controle seu estúdio</span>
-          <span class="block mt-2" style="font-size: clamp(2.2rem, 5.5vw, 4.4rem); background: linear-gradient(135deg, #f472b6, #c026d3, #f43f5e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">e pare de trabalhar</span>
-          <span class="block" style="font-size: clamp(2.2rem, 5.5vw, 4.4rem); background: linear-gradient(135deg, #f472b6, #c026d3, #f43f5e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">no caos.</span>
+          <span class="block" style="font-size: clamp(2.4rem, 6vw, 4.8rem); background: linear-gradient(135deg, #be185d, #7e22ce); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Organize a agenda,</span>
+          <span class="block" style="font-size: clamp(2.4rem, 6vw, 4.8rem); background: linear-gradient(135deg, #be185d, #7e22ce); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">cuide dos pacientes</span>
+          <span class="block mt-2" style="font-size: clamp(2.2rem, 5.5vw, 4.4rem); background: linear-gradient(135deg, #f472b6, #c026d3, #f43f5e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">e deixe o sistema</span>
+          <span class="block" style="font-size: clamp(2.2rem, 5.5vw, 4.4rem); background: linear-gradient(135deg, #f472b6, #c026d3, #f43f5e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">trabalhar por você.</span>
         </h1>
 
         <!-- Subheadline -->
         <p class="text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style="color: rgba(120,40,60,0.6)">
-          A plataforma completa para <strong class="text-pink-500 font-semibold">lash designers</strong>, <strong class="text-fuchsia-600 font-semibold">nail designers</strong> e <strong class="text-pink-500 font-semibold">studios de beleza</strong> que querem mais clientes, menos faltas e total controle — da agenda ao financeiro, tudo em um só lugar.
+          A plataforma completa para <strong class="text-pink-500 font-semibold">clínicas veterinárias</strong>, <strong class="text-fuchsia-600 font-semibold">pet shops</strong> e <strong class="text-pink-500 font-semibold">consultórios veterinários</strong> que querem mais agendamentos, menos faltas e controle total dos pacientes — do cadastro ao financeiro, tudo em um só lugar.
         </p>
 
         <!-- CTAs -->
@@ -100,7 +104,7 @@
                 class="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-xs font-black text-white"
                 :style="{ background: c }">{{ avatarInitials[i] }}</div>
             </div>
-            <span class="font-semibold">+500 estúdios ativos</span>
+            <span class="font-semibold">+200 clínicas ativas</span>
           </div>
           <span class="text-pink-200 hidden sm:inline">|</span>
           <div class="flex items-center gap-1.5">
@@ -121,8 +125,8 @@
       <div class="max-w-5xl mx-auto px-5 sm:px-10">
         <div class="text-center mb-12">
           <p class="section-label">Para quem e</p>
-          <h2 class="text-4xl sm:text-5xl font-black mb-3" style="background: linear-gradient(135deg, #ec4899, #c026d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Feito para o seu negócio de beleza</h2>
-          <p class="text-rose-900/50 max-w-md mx-auto mt-2">Não importa a especialidade, se você cuida de mulheres, essa plataforma é para você.</p>
+          <h2 class="text-4xl sm:text-5xl font-black mb-3" style="background: linear-gradient(135deg, #ec4899, #c026d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Feito para o seu negócio veterinário</h2>
+          <p class="text-rose-900/50 max-w-md mx-auto mt-2">De clínicas a petshops, se você cuida de animais, essa plataforma é para você.</p>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           <div v-for="tipo in tiposNegocio" :key="tipo.label"
@@ -142,7 +146,7 @@
         <div class="text-center mb-12">
           <p class="section-label">Funcionalidades</p>
           <h2 class="text-4xl sm:text-5xl font-black mb-3" style="background: linear-gradient(135deg, #ec4899, #c026d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Tudo para o seu dia a dia</h2>
-          <p class="text-rose-900/50 max-w-lg mx-auto">Da agenda ao caixa, do estoque a equipe. Uma plataforma que entende o ritmo do seu studio.</p>
+          <p class="text-rose-900/50 max-w-lg mx-auto">Da agenda ao caixa, do estoque à equipe. Uma plataforma que entende o ritmo da sua clínica.</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <div v-for="feat in features" :key="feat.title"
@@ -179,7 +183,7 @@
         <div class="text-center mb-16">
           <p class="section-label">Acesso em qualquer lugar</p>
           <h2 class="text-4xl sm:text-5xl font-black mb-3" style="background: linear-gradient(135deg, #ec4899, #c026d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Na palma da sua mão</h2>
-          <p class="text-rose-900/50 max-w-lg mx-auto">Gerencie seu studio de onde estiver. Celular, tablet ou computador — tudo sincronizado em tempo real.</p>
+          <p class="text-rose-900/50 max-w-lg mx-auto">Gerencie sua clínica de onde estiver. Celular, tablet ou computador — tudo sincronizado em tempo real.</p>
         </div>
 
         <div class="flex flex-col items-center gap-16">
@@ -204,7 +208,7 @@
                     <svg style="width:13px;height:13px;color:white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
                   </div>
                   <div class="relative">
-                    <p style="font-size:7px; font-weight:700; color:rgba(255,210,240,0.8); letter-spacing:0.1em; text-transform:uppercase; margin:0 0 2px;">Glow Up Studio</p>
+                    <p style="font-size:7px; font-weight:700; color:rgba(255,210,240,0.8); letter-spacing:0.1em; text-transform:uppercase; margin:0 0 2px;">Clínica Vet</p>
                     <p style="font-size:13px; font-weight:900; color:white; margin:0; line-height:1.1;">Olá, Ana! 👋</p>
                     <p style="font-size:7px; color:rgba(255,220,245,0.7); margin:3px 0 0;">Domingo, 20 de abril de 2026</p>
                   </div>
@@ -330,7 +334,7 @@
       <div class="relative max-w-6xl mx-auto px-5 sm:px-10">
         <div class="text-center mb-12">
           <p class="section-label">Depoimentos</p>
-          <h2 class="text-4xl sm:text-5xl font-black mb-3" style="background: linear-gradient(135deg, #ec4899, #c026d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Elas ja transformaram seus studios</h2>
+          <h2 class="text-4xl sm:text-5xl font-black mb-3" style="background: linear-gradient(135deg, #ec4899, #c026d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Eles já transformaram suas clínicas</h2>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <div v-for="review in reviews" :key="review.name"
@@ -454,9 +458,9 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/>
             </svg>
           </div>
-          <span class="text-sm font-black" style="background: linear-gradient(135deg, #ec4899, #c026d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text">Glow Up Studio</span>
+          <span class="text-sm font-black" style="background: linear-gradient(135deg, #ec4899, #c026d3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text">Clínica Vet</span>
         </div>
-        <p class="text-xs text-rose-900/35 text-center">2026 Glow Up Studio. Feito com amor para empreendedoras da beleza.</p>
+        <p class="text-xs text-rose-900/35 text-center">2026 Clínica Vet. Feito com cuidado para profissionais veterinários.</p>
         <a href="https://wa.me/5511940527609" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-pink-400 hover:text-pink-600 transition-colors">Acessar plataforma</a>
       </div>
     </footer>
@@ -503,24 +507,23 @@ const avatarColors   = ['linear-gradient(135deg,#f472b6,#c026d3)', 'linear-gradi
 const avatarInitials = ['C', 'F', 'B', 'J']
 
 const mockAppts = [
-  { init: 'A', name: 'Ana Lima',   service: 'Lash Classic',  time: '14h00', color: 'linear-gradient(135deg,#f472b6,#c026d3)', accent: 'linear-gradient(90deg,#f472b6,#c026d3)', timeBg: '#fce7f3', timeColor: '#be185d' },
-  { init: 'C', name: 'Carol S.',   service: 'Manicure',      time: '14h45', color: 'linear-gradient(135deg,#e879f9,#a21caf)', accent: 'linear-gradient(90deg,#e879f9,#a21caf)', timeBg: '#fdf4ff', timeColor: '#7e22ce' },
-  { init: 'B', name: 'Beatriz M.', service: 'Sobrancelha',   time: '15h30', color: 'linear-gradient(135deg,#fb7185,#f43f5e)', accent: 'linear-gradient(90deg,#fb7185,#f43f5e)', timeBg: '#fff1f2', timeColor: '#be123c' },
+  { init: 'R', name: 'Rex (Golden)',   service: 'Consulta Clínica', time: '14h00', color: 'linear-gradient(135deg,#f472b6,#c026d3)', accent: 'linear-gradient(90deg,#f472b6,#c026d3)', timeBg: '#fce7f3', timeColor: '#be185d' },
+  { init: 'M', name: 'Mia (Siamesa)',  service: 'Vacinação',       time: '14h45', color: 'linear-gradient(135deg,#e879f9,#a21caf)', accent: 'linear-gradient(90deg,#e879f9,#a21caf)', timeBg: '#fdf4ff', timeColor: '#7e22ce' },
+  { init: 'B', name: 'Bob (Bulldog)',  service: 'Banho & Tosa',    time: '15h30', color: 'linear-gradient(135deg,#fb7185,#f43f5e)', accent: 'linear-gradient(90deg,#fb7185,#f43f5e)', timeBg: '#fff1f2', timeColor: '#be123c' },
 ]
 
 const mobileFeatures = [
-  { title: 'Agenda em tempo real',  desc: 'Visualize e gerencie todos os horários na palma da mão, sem precisar ligar.',         bg: 'linear-gradient(135deg,#fce7f3,#fdf4ff)', color: '#ec4899', svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>' },
-  { title: 'Caixa no celular',      desc: 'Acompanhe entradas, saídas e saldo do dia diretamente no app sem abrir o computador.', bg: 'linear-gradient(135deg,#fdf4ff,#ede9fe)',   color: '#a855f7', svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75"/>' },
-  { title: 'Clientes sempre à mão', desc: 'Histórico completo de cada cliente, serviços anteriores e preferências registradas.',  bg: 'linear-gradient(135deg,#fce7f3,#fee2e2)',   color: '#f43f5e', svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>' },
+  { title: 'Agenda em tempo real',  desc: 'Visualize e gerencie todas as consultas na palma da mão, sem precisar ligar.',              bg: 'linear-gradient(135deg,#fce7f3,#fdf4ff)', color: '#ec4899', svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>' },
+  { title: 'Caixa no celular',      desc: 'Acompanhe entradas, saídas e saldo do dia diretamente no app sem abrir o computador.',     bg: 'linear-gradient(135deg,#fdf4ff,#ede9fe)',   color: '#a855f7', svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75"/>' },
+  { title: 'Pacientes sempre à mão', desc: 'Histórico completo de cada animal: consultas, vacinas, exames e observações registradas.',   bg: 'linear-gradient(135deg,#fce7f3,#fee2e2)',   color: '#f43f5e', svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>' },
 ]
 
 const tiposNegocio = [
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M9.5 3a.5.5 0 01.5.5v1a.5.5 0 01-1 0v-1a.5.5 0 01.5-.5zm4 2a.5.5 0 01.5.5v1a.5.5 0 01-1 0v-.5h-.5a.5.5 0 010-1H13a.5.5 0 01.5.5zM3 8a1 1 0 011-1h16a1 1 0 011 1v10a2 2 0 01-2 2H4a2 2 0 01-2-2V8zm2 0v10h14V8H5zm3 3a1 1 0 100 2 1 1 0 000-2zm4 0a1 1 0 100 2 1 1 0 000-2zm4 0a1 1 0 100 2 1 1 0 000-2z"/>', label: 'Nails Designer',      bg: 'linear-gradient(135deg,#fce7f3,#fdf4ff)', color: '#ec4899' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>',       label: 'Lash Designer',       bg: 'linear-gradient(135deg,#ede9fe,#fdf4ff)', color: '#a855f7' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M7.848 8.25l1.536.887M7.848 8.25a3 3 0 11-5.196-3 3 3 0 015.196 3zm1.536.887a2.165 2.165 0 011.083 1.839c.005.351.054.695.14 1.024M9.384 9.137l2.077 1.199M7.848 8.25a3 3 0 00-2.548 1.45M9.384 9.137l2.077 1.199m0 0l1.568.908m-3.645-2.107a3 3 0 00-.871 2.823m3.645 2.107a2.165 2.165 0 001.083 1.839M16.5 6.75a3 3 0 11-6 0 3 3 0 016 0zM12 9.75v6.75m0 0l-3-3m3 3l3-3"/>',     label: 'Salao de Beleza',     bg: 'linear-gradient(135deg,#fce7f3,#fee2e2)', color: '#f43f5e' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9 9.75h.008v.008H9V9.75zm6 0h.008v.008H15V9.75z"/>',  label: 'Studio Sobrancelha',  bg: 'linear-gradient(135deg,#fff7ed,#fce7f3)', color: '#fb923c' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/>', label: 'Estética e Massagem', bg: 'linear-gradient(135deg,#f0fdf4,#fdf4ff)', color: '#10b981' },
-
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819"/>', label: 'Clínica Veterinária', bg: 'linear-gradient(135deg,#fce7f3,#fdf4ff)', color: '#ec4899' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z"/>',                                          label: 'Pet Shop',          bg: 'linear-gradient(135deg,#ede9fe,#fdf4ff)', color: '#a855f7' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>',                    label: 'Consultório Vet',   bg: 'linear-gradient(135deg,#fce7f3,#fee2e2)', color: '#f43f5e' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64"/>',      label: 'Clínica Móvel',     bg: 'linear-gradient(135deg,#fff7ed,#fce7f3)', color: '#fb923c' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>',   label: 'Cuidados Pet',      bg: 'linear-gradient(135deg,#f0fdf4,#fdf4ff)', color: '#10b981' },
 ]
 
 const features = [
@@ -530,30 +533,30 @@ const features = [
   { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/>',           color: '#f59e0b', title: 'Financeiro',          bg: 'linear-gradient(135deg,#f0fdf4,#fce7f3)', desc: 'Controle contas a pagar, categorize despesas e visualize o fluxo de caixa.' },
   { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>',  color: '#f97316', title: 'Produtos e Estoque', bg: 'linear-gradient(135deg,#fff7ed,#fce7f3)', desc: 'Cadastre produtos com preço e controle de estoque. Saiba o que repor na hora.' },
   { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>',           color: '#8b5cf6', title: 'Equipe',             bg: 'linear-gradient(135deg,#ede9fe,#fce7f3)', desc: 'Gerencie cargos, salários e acesso de cada profissional da equipe.' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/>',     color: '#c026d3', title: 'Personalização',     bg: 'linear-gradient(135deg,#fdf4ff,#ede9fe)', desc: 'Cores, logo e nome do seu estúdio. A plataforma com a identidade do seu negócio.' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>',    color: '#10b981', title: 'Seguranca Total',    bg: 'linear-gradient(135deg,#f0fdf4,#fdf4ff)', desc: 'Dados isolados por empresa. Cada studio ve apenas o que e seu.' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/>',     color: '#c026d3', title: 'Personalização',     bg: 'linear-gradient(135deg,#fdf4ff,#ede9fe)', desc: 'Cores, logo e nome da sua clínica. A plataforma com a identidade do seu negócio.' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>',    color: '#10b981', title: 'Segurança Total',    bg: 'linear-gradient(135deg,#f0fdf4,#fdf4ff)', desc: 'Dados isolados por clínica. Cada unidade vê apenas o que é dela, com acesso controlado.' },
 ]
 
 const stats = [
-  { value: '500+',  label: 'Studios ativos' },
-  { value: '98%',   label: 'Satisfacao' },
-  { value: '8h',    label: 'Economizadas por semana' },
+  { value: '200+',  label: 'Clínicas ativas' },
+  { value: '98%',   label: 'Satisfação' },
+  { value: '6h',    label: 'Economizadas por semana' },
   { value: '5 min', label: 'Para configurar' },
 ]
 
 const steps = [
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>',  color: '#ec4899', title: 'Crie sua conta',       bg: 'linear-gradient(135deg,#fce7f3,#fdf4ff)', desc: 'Cadastre seu estúdio em menos de 5 minutos. Sem burocracia e sem cartão de crédito.' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>',  color: '#a855f7', title: 'Configure seu studio', bg: 'linear-gradient(135deg,#ede9fe,#fdf4ff)', desc: 'Adicione serviços, equipe e personalize as cores com o visual do seu negócio.' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>',  color: '#f59e0b', title: 'Comece a usar',         bg: 'linear-gradient(135deg,#fce7f3,#fff7ed)', desc: 'Agenda, clientes e financas organizados. Acesse do celular ou computador a qualquer hora.' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>',  color: '#ec4899', title: 'Crie sua conta',         bg: 'linear-gradient(135deg,#fce7f3,#fdf4ff)', desc: 'Cadastre sua clínica em menos de 5 minutos. Sem burocracia e sem cartão de crédito.' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>',  color: '#a855f7', title: 'Configure sua clínica', bg: 'linear-gradient(135deg,#ede9fe,#fdf4ff)', desc: 'Adicione serviços, equipe e personalize as cores com o visual do seu negócio.' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>',  color: '#f59e0b', title: 'Comece a usar',         bg: 'linear-gradient(135deg,#fce7f3,#fff7ed)', desc: 'Agenda, pacientes e finanças organizados. Acesse do celular ou computador a qualquer hora.' },
 ]
 
 const reviews = [
-  { name: 'Camila Rocha',   role: 'Lash Designer - São Paulo',     avatarBg: 'linear-gradient(135deg,#f472b6,#c026d3)', text: 'Acabei com o caderninho de vez! Agenda organizada, sem conflito de horários e o caixa do mês na palma da mão.' },
-  { name: 'Fernanda Lima',  role: 'Nail Designer - Rio de Janeiro', avatarBg: 'linear-gradient(135deg,#e879f9,#a21caf)', text: 'O controle de estoque foi o que me conquistou. Sei exatamente o que comprar e nunca fico sem insumo.' },
-  { name: 'Beatriz Santos', role: 'Salao - Belo Horizonte',         avatarBg: 'linear-gradient(135deg,#fb7185,#f43f5e)', text: 'Tenho 6 funcionarias e a gestao de atividades resolveu tudo. Acompanho tudo pelo celular.' },
-  { name: 'Juliana Melo',   role: 'Studio Sobrancelha - Curitiba',  avatarBg: 'linear-gradient(135deg,#f472b6,#e879f9)', text: 'A personalizacao me encantou. A plataforma ficou com as cores do meu studio. Parece feita so pra mim!' },
-  { name: 'Patricia Alves', role: 'Esteticista - Porto Alegre',     avatarBg: 'linear-gradient(135deg,#34d399,#0ea5e9)', text: 'Nunca mais perdi data de conta a pagar. Organizado por categoria e com alertas. Minha saude financeira melhorou!' },
-  { name: 'Renata Costa',   role: 'Studio Beleza - Brasilia',       avatarBg: 'linear-gradient(135deg,#fbbf24,#f43f5e)', text: 'Testei 3 sistemas antes. Esse e o unico que funciona sem precisar chamar suporte. Simples, bonito e completo.' },
+  { name: 'Dra. Camila Rocha',   role: 'Veterinária — São Paulo',         avatarBg: 'linear-gradient(135deg,#f472b6,#c026d3)', text: 'Acabei com a planilha de vez! Agenda organizada, sem conflito de horários e o caixa do mês na palma da mão.' },
+  { name: 'Fernanda Lima',      role: 'Gestora de Pet Shop — Rio de Janeiro', avatarBg: 'linear-gradient(135deg,#e879f9,#a21caf)', text: 'O controle de estoque de medicamentos foi o que me conquistou. Sei exatamente o que comprar e nunca fico sem insumo.' },
+  { name: 'Dr. Bruno Santos',   role: 'Consultório Vet — Belo Horizonte',  avatarBg: 'linear-gradient(135deg,#fb7185,#f43f5e)', text: 'Tenho 4 funcionários e a gestão de atividades resolveu tudo. Acompanho tudo pelo celular.' },
+  { name: 'Juliana Melo',       role: 'Clínica Veterinária — Curitiba',    avatarBg: 'linear-gradient(135deg,#f472b6,#e879f9)', text: 'A personalização me encantou. A plataforma ficou com as cores da minha clínica. Parece feita só pra mim!' },
+  { name: 'Patricia Alves',     role: 'Banho & Tosa — Porto Alegre',        avatarBg: 'linear-gradient(135deg,#34d399,#0ea5e9)', text: 'Nunca mais perdi data de conta a pagar. Organizado por categoria e com alertas. Minha saúde financeira melhorou!' },
+  { name: 'Renata Costa',       role: 'Clínica Móvel — Brasília',           avatarBg: 'linear-gradient(135deg,#fbbf24,#f43f5e)', text: 'Testei 3 sistemas antes. Esse é o único que funciona sem precisar chamar suporte. Simples, bonito e completo.' },
 ]
 
 const plans = [
@@ -561,29 +564,29 @@ const plans = [
     name: 'Essencial', price: 'R$97', period: '/mês', featured: false,
     desc: 'Para quem está começando',
     cta: 'Começar agora',
-    items: ['Até 1 usuária', 'Agendamentos ilimitados', 'Até 50 clientes', 'Atividades da equipe', 'Suporte por e-mail'],
+    items: ['Até 1 usuário', 'Agendamentos ilimitados', 'Até 50 tutores', 'Cadastro de animais', 'Atividades da equipe', 'Suporte por e-mail'],
   },
   {
     name: 'Pro', price: 'R$197', period: '/mês', featured: true,
-    desc: 'Para studios em crescimento',
+    desc: 'Para clínicas em crescimento',
     cta: 'Assinar Pro',
-    items: ['Usuárias ilimitadas', 'Clientes ilimitados', 'Todos os módulos', 'Personalização de marca', 'Financeiro completo', 'Suporte WhatsApp'],
+    items: ['Usuários ilimitados', 'Tutores e animais ilimitados', 'Todos os módulos', 'Personalização de marca', 'Financeiro completo', 'Suporte WhatsApp'],
   },
   {
     name: 'Elite', price: 'R$297', period: '/mês', featured: false,
-    desc: 'Para redes e franquias',
+    desc: 'Para redes e franquias veterinárias',
     cta: 'Falar com a gente',
-    items: ['Multi-unidade', 'Relatórios avançados', 'Integrações via API', 'Gerente dedicada', 'Onboarding personalizado', 'SLA garantido'],
+    items: ['Multi-unidade', 'Relatórios avançados', 'Integrações via API', 'Gerente dedicado', 'Onboarding personalizado', 'SLA garantido'],
   },
 ]
 
 const faqs = [
-  { q: 'Preciso instalar alguma coisa?',         a: 'Nao! O Glow Up Studio e 100% online, funciona em qualquer celular ou computador, sem instalacao.' },
-  { q: 'Meus dados ficam seguros?',              a: 'Sim. Cada studio tem seus dados completamente isolados. Usamos criptografia e backups automaticos.' },
-  { q: 'Posso cancelar quando quiser?',          a: 'Sim, sem fidelidade e sem multa. Cancele quando quiser pelo painel ou pelo WhatsApp de suporte.' },
-  { q: 'Quantas funcionárias posso adicionar?',  a: 'No plano Essencial o acesso é para 1 usuária. No Pro e Elite, adicione toda a equipe sem limite.' },
-  { q: 'Funciona para mais de um serviço?',      a: 'Sim! Cadastre lash, unhas, sobrancelha e outros serviços no mesmo sistema com preços individuais.' },
-  { q: 'Tem app para celular?',                  a: 'A plataforma é totalmente responsiva no celular pelo navegador. Um app nativo está a caminho!' },
+  { q: 'Preciso instalar alguma coisa?',            a: 'Não! O sistema é 100% online, funciona em qualquer celular ou computador, sem instalação.' },
+  { q: 'Meus dados ficam seguros?',                 a: 'Sim. Cada clínica tem seus dados completamente isolados. Usamos criptografia e backups automáticos.' },
+  { q: 'Posso cancelar quando quiser?',             a: 'Sim, sem fidelidade e sem multa. Cancele quando quiser pelo painel ou pelo WhatsApp de suporte.' },
+  { q: 'Quantos usuários posso adicionar?',         a: 'No plano Essencial o acesso é para 1 usuário. No Pro e Elite, adicione toda a equipe sem limite.' },
+  { q: 'Funciona para mais de uma espécie animal?', a: 'Sim! Cadastre cães, gatos, pássaros, répteis e outros animais com informações específicas de cada um.' },
+  { q: 'Tem app para celular?',                     a: 'A plataforma é totalmente responsiva no celular pelo navegador. Um app nativo está a caminho!' },
 ]
 </script>
 

@@ -96,7 +96,7 @@
         <input
           v-model="filtro.busca"
           type="text"
-          placeholder="Nome do cliente..."
+          placeholder="Nome do tutor ou animal..."
           class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-violet-400"
         />
       </div>
@@ -148,7 +148,7 @@
             <tr class="bg-gray-50 border-b border-gray-100">
               <th class="text-left px-5 py-3 text-xs font-extrabold text-gray-400 uppercase tracking-widest">Data</th>
               <th class="text-left px-5 py-3 text-xs font-extrabold text-gray-400 uppercase tracking-widest">Hora</th>
-              <th class="text-left px-5 py-3 text-xs font-extrabold text-gray-400 uppercase tracking-widest">Cliente</th>
+              <th class="text-left px-5 py-3 text-xs font-extrabold text-gray-400 uppercase tracking-widest">Tutor / Animal</th>
               <th class="text-left px-5 py-3 text-xs font-extrabold text-gray-400 uppercase tracking-widest">Serviços</th>
               <th class="text-left px-5 py-3 text-xs font-extrabold text-gray-400 uppercase tracking-widest">Profissional</th>
               <th class="text-left px-5 py-3 text-xs font-extrabold text-gray-400 uppercase tracking-widest">Valor</th>
@@ -180,7 +180,10 @@
                   <div class="w-7 h-7 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-black text-[10px] shrink-0 shadow-sm shadow-pink-200">
                     {{ (ag.cliente_nome ?? ag.nome_solicitante ?? '?').slice(0, 2).toUpperCase() }}
                   </div>
-                  <span class="font-semibold text-gray-800 max-w-[140px] truncate">{{ ag.cliente_nome ?? ag.nome_solicitante ?? '—' }}</span>
+                  <div>
+                    <span class="font-semibold text-gray-800 max-w-[140px] truncate block">{{ ag.cliente_nome ?? ag.nome_solicitante ?? '—' }}</span>
+                    <span v-if="(ag as any).animal_nome" class="text-[10px] text-pink-500 font-semibold">🐾 {{ (ag as any).animal_nome }}</span>
+                  </div>
                 </div>
               </td>
               <td class="px-5 py-3 text-gray-500 max-w-[180px] truncate">{{ ag.servicos_nomes ?? '—' }}</td>
@@ -498,6 +501,28 @@
                 <option v-for="c in clientes" :key="c.id" :value="c.id">{{ c.nome }}</option>
               </select>
               <p v-if="formErrors.cliente_id" class="text-xs text-red-500 mt-1">{{ formErrors.cliente_id }}</p>
+            </div>
+
+            <!-- Animal -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 uppercase tracking-widest mb-1.5">
+                🐾 Animal / Paciente
+              </label>
+              <select
+                v-model="form.animal_id"
+                class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
+              >
+                <option :value="null">Nenhum (sem animal vinculado)</option>
+                <option
+                  v-for="a in (form.cliente_id ? animaisDoCliente : animaisLista)"
+                  :key="a.id"
+                  :value="a.id"
+                >{{ a.nome }}{{ a.especie ? ` (${a.especie})` : '' }}</option>
+              </select>
+              <p v-if="form.cliente_id && animaisDoCliente.length === 0" class="text-xs text-amber-600 mt-1">
+                Nenhum animal cadastrado para este tutor.
+                <NuxtLink to="/animais" class="underline font-semibold">Cadastrar animal</NuxtLink>
+              </p>
             </div>
 
             <!-- Data e hora -->
@@ -950,6 +975,7 @@ interface AgendamentoRow {
 interface ClienteOption { id: number; nome: string }
 interface FuncionarioOption { id: number; nome: string | null; email: string | null; profile_id: string | null }
 interface ServicoOption { id: number; nome: string; preco: number; duracao_min: number; funcionario_id: number | null; funcionario_profile_id: string | null }
+interface AnimalOption { id: number; nome: string; especie: string | null; cliente_id: number | null }
 
 const supabase = createSupabaseClient()
 const { empresaId, loadEmpresa } = useEmpresa()
@@ -959,6 +985,7 @@ const agendamentos = ref<AgendamentoRow[]>([])
 const clientes = ref<ClienteOption[]>([])
 const funcionarios = ref<FuncionarioOption[]>([])
 const servicosAtivos = ref<ServicoOption[]>([])
+const animaisLista = ref<AnimalOption[]>([])
 
 const loading = ref(true)
 const error = ref<string | null>(null)
@@ -1092,8 +1119,13 @@ async function saveQuickCliente() {
   quickClienteAberto.value = false
 }
 
+const animaisDoCliente = computed(() =>
+  animaisLista.value.filter(a => a.cliente_id === form.cliente_id)
+)
+
 const form = reactive({
   cliente_id:           null as number | null,
+  animal_id:            null as number | null,
   funcionario_id:       null as string | null,  // uuid para salvar no DB
   funcionario_bigint_id: null as number | null, // bigint para o dropdown
   data:         '',
@@ -1301,7 +1333,7 @@ onMounted(async () => {
   await loadEmpresa()
   // fetchFuncionarios deve terminar ANTES dos outros para que profile_id e nomes sejam resolvidos
   await fetchFuncionarios()
-  await Promise.all([fetchAgendamentos(), fetchClientes(), loadHorarios()])
+  await Promise.all([fetchAgendamentos(), fetchClientes(), fetchAnimais(), loadHorarios()])
   await fetchServicos()
 })
 
@@ -1359,6 +1391,15 @@ async function fetchClientes() {
     .eq('ativo', true)
     .order('nome')
   clientes.value = (data ?? []) as ClienteOption[]
+}
+
+async function fetchAnimais() {
+  const { data } = await supabase
+    .from('animais')
+    .select('id, nome, especie, cliente_id')
+    .eq('empresa_id', empresaId.value!)
+    .order('nome')
+  animaisLista.value = (data ?? []) as AnimalOption[]
 }
 
 async function fetchFuncionarios() {
@@ -1424,7 +1465,8 @@ async function fetchServicos() {
 // ── CRUD ──────────────────────────────────────────────────────
 
 function resetForm() {
-  form.cliente_id = null; form.funcionario_id = null; form.funcionario_bigint_id = null
+  form.cliente_id = null; form.animal_id = null
+  form.funcionario_id = null; form.funcionario_bigint_id = null
   form.data = ''; form.hora = ''; form.status = 'agendado'
   form.observacoes = ''; form.servico_id = null
   formErrors.cliente_id = ''; formErrors.data = ''; formErrors.hora = ''
@@ -1452,6 +1494,7 @@ function editAgendamento(ag: AgendamentoRow) {
   modalError.value = null
   formErrors.cliente_id = ''; formErrors.data = ''; formErrors.hora = ''
   form.cliente_id = ag.cliente_id
+  form.animal_id = (ag as any).animal_id ?? null
   form.funcionario_id = ag.funcionario_id
   // Reverse-lookup: achar o bigint id a partir do profile_id salvo
   form.funcionario_bigint_id = funcionarios.value.find(f => f.profile_id === ag.funcionario_id)?.id ?? null
@@ -1515,6 +1558,7 @@ async function salvarEdicao() {
     .from('agendamentos')
     .update({
       cliente_id: form.cliente_id ?? null,
+      animal_id: form.animal_id ?? null,
       funcionario_id: form.funcionario_id,
       data_hora: buildDataHora(),
       status: form.status,
@@ -1540,6 +1584,7 @@ async function salvarAdicao() {
     .from('agendamentos')
     .insert({
       cliente_id: form.cliente_id ?? null,
+      animal_id: form.animal_id ?? null,
       funcionario_id: form.funcionario_id,
       data_hora: buildDataHora(),
       status: form.status,

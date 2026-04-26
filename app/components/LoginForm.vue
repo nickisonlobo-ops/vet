@@ -2,22 +2,22 @@
   <div class="w-full max-w-md">
     <!-- Cabeçalho fora do card -->
     <div class="flex flex-col items-center gap-3 mb-8">
-      <!-- Ícone Aurora -->
-      <div class="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg shadow-pink-900/40" style="background: linear-gradient(135deg, #ec4899, #a855f7)">
-        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/>
+      <!-- Ícone VetCare -->
+      <div class="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, #0d9488, #0891b2)">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2C10.34 2 9 3.34 9 5s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM5.5 6C4.12 6 3 7.12 3 8.5S4.12 11 5.5 11 8 9.88 8 8.5 6.88 6 5.5 6zm13 0C17.12 6 16 7.12 16 8.5S17.12 11 18.5 11 21 9.88 21 8.5 19.88 6 18.5 6zM12 10c-3.5 0-7 3-7 6.5 0 2.5 3 4.5 7 4.5s7-2 7-4.5c0-3.5-3.5-6.5-7-6.5z"/>
         </svg>
       </div>
       <div class="text-center">
-        <h1 class="text-2xl font-black tracking-tight" style="background: linear-gradient(135deg, #ec4899, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text">Glow Up Studio</h1>
-        <p class="text-sm text-gray-500 mt-0.5">Sua plataforma de beleza</p>
+        <h1 class="text-2xl font-black tracking-tight" style="background: linear-gradient(135deg, #0d9488, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text">Clínica Veterinária</h1>
+        <p class="text-sm text-gray-500 mt-0.5">Sua plataforma veterinária</p>
       </div>
     </div>
 
     <!-- Card -->
-    <div class="rounded-2xl border border-pink-100 shadow-xl shadow-pink-100/60 p-8" style="background: #ffffff">
+    <div class="rounded-2xl border border-teal-100 shadow-xl shadow-teal-100/60 p-8" style="background: #ffffff">
       <!-- Abas -->
-      <div class="flex rounded-xl p-1 mb-6" style="background: #fdf2f8">
+      <div class="flex rounded-xl p-1 mb-6" style="background: #f0fdfa">
         <button
           v-for="tab in tabs"
           :key="tab.key"
@@ -29,7 +29,7 @@
               : 'text-gray-400 hover:text-gray-600',
           activeTab === tab.key ? '' : '',
           ]"
-          :style="activeTab === tab.key ? 'background: linear-gradient(135deg, #ec4899, #a855f7)' : ''"
+          :style="activeTab === tab.key ? 'background: linear-gradient(135deg, #0d9488, #0891b2)' : ''"
           @click="activeTab = tab.key"
         >
           {{ tab.label }}
@@ -69,7 +69,7 @@
       <p v-if="authError" class="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-2.5 text-center">
         {{ authError }}
       </p>
-      <AppButton variant="secondary" size="lg" type="submit" :loading="authLoading" class="mt-2 w-full font-bold !text-white !border-0" style="background: linear-gradient(135deg, #ec4899, #a855f7)">
+      <AppButton variant="secondary" size="lg" type="submit" :loading="authLoading" class="mt-2 w-full font-bold !text-white !border-0" style="background: linear-gradient(135deg, #0d9488, #0891b2)">
         Entrar
       </AppButton>
     </form>
@@ -88,7 +88,7 @@
         v-model="register.nomeEmpresa"
         label="Nome da empresa"
         type="text"
-        placeholder="Nome do seu studio"
+        placeholder="Nome da sua clínica"
         :error="registerErrors.nomeEmpresa"
         required
       />
@@ -129,7 +129,7 @@
       <p v-if="registerSuccess" class="text-sm text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-4 py-2.5 text-center">
         Cadastro realizado! Verifique seu e-mail para confirmar a conta.
       </p>
-      <AppButton variant="secondary" size="lg" type="submit" :loading="authLoading" class="mt-2 w-full font-bold !text-white !border-0" style="background: linear-gradient(135deg, #ec4899, #a855f7)">
+      <AppButton variant="secondary" size="lg" type="submit" :loading="authLoading" class="mt-2 w-full font-bold !text-white !border-0" style="background: linear-gradient(135deg, #0d9488, #0891b2)">
         Criar conta
       </AppButton>
     </form>

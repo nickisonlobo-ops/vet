@@ -18,7 +18,7 @@
                 </svg>
               </div>
               <div>
-                <p class="text-xs font-bold text-pink-100 uppercase tracking-widest">UpStudio</p>
+                <p class="text-xs font-bold text-pink-100 uppercase tracking-widest">Clínica Veterinária</p>
                 <h1 class="text-2xl font-black text-white leading-tight">
                   {{ funcionarioLogado ? `Olá, ${primeiroNome(funcionarioLogado.nome)}!` : 'Minhas Atividades' }}
                 </h1>
@@ -383,7 +383,7 @@
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15),transparent_60%)]" />
         <div class="relative px-6 sm:px-10 py-6 flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p class="text-[11px] font-bold uppercase tracking-[0.25em] text-pink-100 mb-1">UpStudio · Painel Admin</p>
+            <p class="text-[11px] font-bold uppercase tracking-[0.25em] text-pink-100 mb-1">Clínica Veterinária · Painel Admin</p>
             <h1 class="text-xl sm:text-3xl font-black text-white leading-tight">Visão Geral do Negócio</h1>
             <p class="text-sm text-gray-300/70 mt-1">{{ dataHoje }}</p>
           </div>

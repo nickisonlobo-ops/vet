@@ -19,11 +19,11 @@
               <div class="flex items-center gap-2 mb-1">
                 <span class="text-xs font-semibold text-white/80 uppercase tracking-widest">CRM</span>
                 <span class="w-1 h-1 rounded-full bg-white/40" />
-                <span class="text-xs text-white/70 hidden sm:inline">UpStudio</span>
+                <span class="text-xs text-white/70 hidden sm:inline">Clínica Veterinária</span>
               </div>
-              <h1 class="text-xl sm:text-3xl font-bold text-white tracking-tight leading-none">Clientes</h1>
+              <h1 class="text-xl sm:text-3xl font-bold text-white tracking-tight leading-none">Tutores</h1>
               <p class="text-sm text-white/80 mt-1.5">
-                {{ loading ? 'Carregando...' : `${clientesFiltrados.length} de ${clientes.length} cliente(s) exibido(s)` }}
+                {{ loading ? 'Carregando...' : `${clientesFiltrados.length} de ${clientes.length} tutor(es) exibido(s)` }}
               </p>
             </div>
           </div>
@@ -48,7 +48,7 @@
               @click="abrirAdicionar"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-              <span class="hidden sm:inline">Adicionar Cliente</span>
+              <span class="hidden sm:inline">Adicionar Tutor</span>
             </button>
           </div>
         </div>
@@ -60,7 +60,7 @@
           <div class="flex flex-col gap-1 bg-white/10 backdrop-blur-sm rounded-2xl px-5 py-4 border border-white/10 hover:bg-white/15 transition-colors">
             <span class="text-xs font-semibold text-white/70 uppercase tracking-widest">Total</span>
             <span class="text-xl font-black text-white leading-tight">{{ clientes.length }}</span>
-            <span class="text-xs text-white/50">cliente(s)</span>
+            <span class="text-xs text-white/50">tutor(es)</span>
           </div>
           <div class="flex flex-col gap-1 bg-white/10 rounded-2xl px-5 py-4 border border-white/10 hover:bg-white/15 transition-colors">
             <div class="flex items-center gap-1.5">
@@ -68,12 +68,12 @@
               <span class="text-xs font-semibold text-white/70 uppercase tracking-widest">Ativos</span>
             </div>
             <span class="text-xl font-black text-white leading-tight">{{ clientesAtivos }}</span>
-            <span class="text-xs text-white/50">habilitados</span>
+            <span class="text-xs text-white/50">ativos</span>
           </div>
           <div class="flex flex-col gap-1 bg-white/[0.07] rounded-2xl px-5 py-4 border border-white/10 hover:bg-white/12 transition-colors">
             <span class="text-xs font-semibold text-white/70 uppercase tracking-widest">Com E-mail</span>
             <span class="text-xl font-black text-white leading-tight">{{ comEmail }}</span>
-            <span class="text-xs text-white/50">de {{ clientes.length }} cadastrados</span>
+            <span class="text-xs text-white/50">de {{ clientes.length }} tutores</span>
           </div>
           <div class="flex flex-col gap-1 bg-white/[0.07] rounded-2xl px-5 py-4 border border-white/10 hover:bg-white/12 transition-colors">
             <span class="text-xs font-semibold text-white/70 uppercase tracking-widest">Cidades</span>
@@ -174,7 +174,7 @@
               <td colspan="8" class="text-center py-20">
                 <div class="flex flex-col items-center gap-3">
                   <svg class="w-14 h-14 text-gray-300" fill="none" stroke="currentColor" stroke-width="1.25" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.5 0a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm-1.5 6.75a3.375 3.375 0 00-6.75 0h6.75z"/></svg>
-                  <span class="text-base font-semibold text-gray-400">Nenhum cliente encontrado</span>
+                  <span class="text-base font-semibold text-gray-400">Nenhum tutor encontrado</span>
                   <span v-if="filtrosAtivos > 0" class="text-sm text-gray-400">Tente ajustar os filtros</span>
                 </div>
               </td>
@@ -262,7 +262,7 @@
                 <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-white">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.5 0a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm-1.5 6.75a3.375 3.375 0 00-6.75 0h6.75z"/></svg>
                 </div>
-                <h2 class="text-lg font-bold text-white">{{ adicionando ? 'Adicionar Cliente' : 'Editar Cliente' }}</h2>
+                <h2 class="text-lg font-bold text-white">{{ adicionando ? 'Adicionar Tutor' : 'Editar Tutor' }}</h2>
               </div>
               <button type="button" class="w-8 h-8 flex items-center justify-center rounded-xl text-white/60 hover:text-white hover:bg-white/10 transition-colors" @click="fecharModal">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -324,8 +324,8 @@
                   <span class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200" :class="form.ativo ? 'translate-x-5' : 'translate-x-0'" />
                 </button>
                 <div>
-                  <p class="text-sm font-semibold text-gray-700">Cliente ativo</p>
-                  <p class="text-xs text-gray-400">{{ form.ativo ? 'Habilitado para novas vendas' : 'Desativado' }}</p>
+                  <p class="text-sm font-semibold text-gray-700">Tutor ativo</p>
+                  <p class="text-xs text-gray-400">{{ form.ativo ? 'Habilitado para agendamentos' : 'Desativado' }}</p>
                 </div>
               </div>
 
@@ -336,7 +336,7 @@
                   Cancelar
                 </button>
                 <AppButton variant="primary" size="md" type="submit" :loading="saving" class="flex-1">
-                  {{ adicionando ? 'Adicionar' : 'Salvar alterações' }}
+                  {{ adicionando ? 'Adicionar Tutor' : 'Salvar alterações' }}
                 </AppButton>
               </div>
             </form>
@@ -358,7 +358,7 @@
               <div class="w-16 h-16 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center mx-auto mb-5">
                 <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m-7 0a1 1 0 01-1-1V5a1 1 0 011-1h8a1 1 0 011 1v1a1 1 0 01-1 1H9z"/></svg>
               </div>
-              <h2 class="text-xl font-bold text-gray-800">Excluir cliente?</h2>
+              <h2 class="text-xl font-bold text-gray-800">Excluir tutor?</h2>
               <p class="text-sm text-gray-500 mt-2 leading-relaxed">
                 Tem certeza que deseja excluir <br /><strong class="text-gray-800">{{ excluindo.nome }}</strong>?<br />
                 <span class="text-red-500 text-xs font-semibold">Essa ação não pode ser desfeita.</span>

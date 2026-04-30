@@ -502,7 +502,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, watch, onMounted } from 'vue'
+import { ref, reactive, computed, watch, onMounted, onUnmounted } from 'vue'
 import { createSupabaseClient } from '~/lib/supabase'
 import { useAdmin } from '~/composables/useAdmin'
 import { useEmpresa } from '~/composables/useEmpresa'
@@ -705,17 +705,28 @@ const columns = [
   { key: 'created_at',       label: 'Criado em' },
 ]
 
-onMounted(async () => { await loadEmpresa(); await fetchContas() })
+let realtimeChannel: ReturnType<typeof supabase.channel> | null = null
 
-async function fetchContas() {
-  loading.value = true
+onMounted(async () => {
+  await loadEmpresa()
+  await fetchContas()
+  realtimeChannel = supabase
+    .channel('contas-pagar-rt')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'contas_pagar' }, () => fetchContas(true))
+    .subscribe()
+})
+
+onUnmounted(() => { if (realtimeChannel) supabase.removeChannel(realtimeChannel) })
+
+async function fetchContas(silent = false) {
+  if (!silent) loading.value = true
   const { data, error: fetchError } = await supabase
     .from('contas_pagar')
     .select('*')
     .eq('empresa_id', empresaId.value!)
     .order('data_vencimento', { ascending: true })
 
-  loading.value = false
+  if (!silent) loading.value = false
   if (fetchError) { error.value = fetchError.message; return }
   contas.value = (data ?? []) as ContaPagar[]
 }

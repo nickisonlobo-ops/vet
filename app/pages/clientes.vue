@@ -387,7 +387,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
 import { createSupabaseClient } from '~/lib/supabase'
 import { useAdmin } from '~/composables/useAdmin'
 import { useEmpresa } from '~/composables/useEmpresa'
@@ -506,17 +506,28 @@ function initials(nome: string): string {
 }
 
 // �"?�"? CRUD �"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?
-onMounted(async () => { await loadEmpresa(); await fetchClientes() })
+let realtimeChannel: ReturnType<typeof supabase.channel> | null = null
 
-async function fetchClientes() {
-  loading.value = true
+onMounted(async () => {
+  await loadEmpresa()
+  await fetchClientes()
+  realtimeChannel = supabase
+    .channel('clientes-rt')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'clientes' }, () => fetchClientes(true))
+    .subscribe()
+})
+
+onUnmounted(() => { if (realtimeChannel) supabase.removeChannel(realtimeChannel) })
+
+async function fetchClientes(silent = false) {
+  if (!silent) loading.value = true
   const { data, error: fetchError } = await supabase
     .from('clientes')
     .select('*')
     .eq('empresa_id', empresaId.value!)
     .order('nome', { ascending: true })
 
-  loading.value = false
+  if (!silent) loading.value = false
   if (fetchError) { error.value = fetchError.message; return }
   clientes.value = (data ?? []) as Cliente[]
 }

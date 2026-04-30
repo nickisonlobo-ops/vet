@@ -1088,7 +1088,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted, watch, nextTick } from 'vue'
+import { ref, reactive, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { createSupabaseClient } from '~/lib/supabase'
 import { useEmpresa } from '~/composables/useEmpresa'
 import { useAdmin } from '~/composables/useAdmin'
@@ -1578,15 +1578,23 @@ function statusBadge(s: string) {
 
 // ── Data loading ──────────────────────────────────────────────
 
+let realtimeChannel: ReturnType<typeof supabase.channel> | null = null
+
 onMounted(async () => {
   await loadEmpresa()
   await fetchFuncionarios()
   await Promise.all([fetchAgendamentos(), fetchClientes(), fetchAnimais(), loadHorarios()])
   await fetchServicos()
+  realtimeChannel = supabase
+    .channel('agendamentos-rt')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'agendamentos' }, () => fetchAgendamentos(true))
+    .subscribe()
 })
 
-async function fetchAgendamentos() {
-  loading.value = true
+onUnmounted(() => { if (realtimeChannel) supabase.removeChannel(realtimeChannel) })
+
+async function fetchAgendamentos(silent = false) {
+  if (!silent) loading.value = true
 
   // Fetch agendamentos — join profiles pelo FK para pegar o email do profissional
   const { data: rows, error: fetchError } = await supabase
@@ -1595,7 +1603,7 @@ async function fetchAgendamentos() {
     .eq('empresa_id', empresaId.value!)
     .order('data_hora', { ascending: false })
 
-  if (fetchError) { error.value = fetchError.message; loading.value = false; return }
+  if (fetchError) { error.value = fetchError.message; if (!silent) loading.value = false; return }
 
   // Mapa email → nome usando funcionarios já carregados
   const funcNomeByEmail: Record<string, string> = {}
@@ -1628,7 +1636,7 @@ async function fetchAgendamentos() {
     telefone_solicitante: r.telefone_solicitante ?? null,
   }))
 
-  loading.value = false
+  if (!silent) loading.value = false
 }
 
 async function fetchClientes() {

@@ -326,7 +326,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
 import { createSupabaseClient } from '~/lib/supabase'
 import { useAdmin } from '~/composables/useAdmin'
 import { useEmpresa } from '~/composables/useEmpresa'
@@ -396,20 +396,28 @@ function formatCurrency(v: number) {
   return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 }
 
+let realtimeChannel: ReturnType<typeof supabase.channel> | null = null
+
 onMounted(async () => {
   await loadEmpresa()
   await fetchProdutos()
+  realtimeChannel = supabase
+    .channel('estoque-rt')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'produtos_casa_racao' }, () => fetchProdutos(true))
+    .subscribe()
 })
 
-async function fetchProdutos() {
+onUnmounted(() => { if (realtimeChannel) supabase.removeChannel(realtimeChannel) })
+
+async function fetchProdutos(silent = false) {
   if (!empresaId.value) { loading.value = false; return }
-  loading.value = true
+  if (!silent) loading.value = true
   const { data, error: e } = await supabase
     .from('produtos_casa_racao')
     .select('*')
     .eq('empresa_id', empresaId.value)
     .order('nome')
-  loading.value = false
+  if (!silent) loading.value = false
   if (e) { error.value = e.message; return }
   produtos.value = (data ?? []) as Produto[]
 }

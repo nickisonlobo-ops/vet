@@ -810,7 +810,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
 import { createSupabaseClient } from '~/lib/supabase'
 import { useAdmin } from '~/composables/useAdmin'
 import { useEmpresa } from '~/composables/useEmpresa'
@@ -1005,8 +1005,8 @@ async function uploadFoto(animalId: number): Promise<string | null> {
 }
 
 // ── Data ───────────────────────────────────────────────────────
-async function carregarDados() {
-  loading.value = true
+async function carregarDados(silent = false) {
+  if (!silent) loading.value = true
   error.value = null
   try {
     await loadEmpresa()
@@ -1037,7 +1037,7 @@ async function carregarDados() {
   } catch (e: any) {
     error.value = e.message ?? 'Erro ao carregar dados.'
   } finally {
-    loading.value = false
+    if (!silent) loading.value = false
   }
 }
 
@@ -1394,7 +1394,17 @@ async function executarExclusao() {
   }
 }
 
-onMounted(carregarDados)
+let realtimeChannel: ReturnType<typeof supabase.channel> | null = null
+
+onMounted(async () => {
+  await carregarDados()
+  realtimeChannel = supabase
+    .channel('animais-rt')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'animais' }, () => carregarDados(true))
+    .subscribe()
+})
+
+onUnmounted(() => { if (realtimeChannel) supabase.removeChannel(realtimeChannel) })
 </script>
 
 <style scoped>

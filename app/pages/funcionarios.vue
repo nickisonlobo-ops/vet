@@ -463,7 +463,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
 import { createSupabaseClient } from '~/lib/supabase'
 import { useAdmin } from '~/composables/useAdmin'
 import { useEmpresa } from '~/composables/useEmpresa'
@@ -620,20 +620,28 @@ const columns = [
   { key: 'endereco', label: 'Endereço' },
 ]
 
+let realtimeChannel: ReturnType<typeof supabase.channel> | null = null
+
 onMounted(async () => {
   await loadEmpresa()
   await fetchFuncionarios()
+  realtimeChannel = supabase
+    .channel('funcionarios-rt')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'funcionarios' }, () => fetchFuncionarios(true))
+    .subscribe()
 })
 
-async function fetchFuncionarios() {
-  loading.value = true
+onUnmounted(() => { if (realtimeChannel) supabase.removeChannel(realtimeChannel) })
+
+async function fetchFuncionarios(silent = false) {
+  if (!silent) loading.value = true
   const { data, error: fetchError } = await supabase
     .from('funcionarios')
     .select('*')
     .eq('empresa_id', empresaId.value!)
     .order('id', { ascending: true })
 
-  loading.value = false
+  if (!silent) loading.value = false
 
   if (fetchError) { error.value = fetchError.message; return }
   funcionarios.value = (data ?? []) as Funcionario[]

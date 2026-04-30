@@ -421,7 +421,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
 import { createSupabaseClient } from '~/lib/supabase'
 import { useEmpresa } from '~/composables/useEmpresa'
 import { useAdmin } from '~/composables/useAdmin'
@@ -546,13 +546,21 @@ function categoriaBadgeOverlay(cat: string) {
   }[cat] ?? 'bg-gray-500/80 text-white'
 }
 
+let realtimeChannel: ReturnType<typeof supabase.channel> | null = null
+
 onMounted(async () => {
   await loadEmpresa()
   await Promise.all([fetchServicos(), fetchFuncionarios()])
+  realtimeChannel = supabase
+    .channel('servicos-rt')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'servicos' }, () => fetchServicos(true))
+    .subscribe()
 })
 
-async function fetchServicos() {
-  loading.value = true
+onUnmounted(() => { if (realtimeChannel) supabase.removeChannel(realtimeChannel) })
+
+async function fetchServicos(silent = false) {
+  if (!silent) loading.value = true
   const { data, error: fetchError } = await supabase
     .from('servicos')
     .select('*, servico_funcionarios(funcionario_id, funcionarios(id, nome))')
@@ -560,7 +568,7 @@ async function fetchServicos() {
     .order('categoria', { ascending: true })
     .order('nome', { ascending: true })
 
-  loading.value = false
+  if (!silent) loading.value = false
   if (fetchError) { error.value = fetchError.message; return }
   servicos.value = (data ?? []) as Servico[]
 }

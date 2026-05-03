@@ -113,7 +113,7 @@
             type="text"
             maxlength="60"
             class="w-full max-w-sm border border-pink-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
-            placeholder="Clínica Veterinária"
+            placeholder="VetFlow"
           />
         </div>
       </section>

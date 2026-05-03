@@ -27,22 +27,22 @@ export interface PersonalizacaoConfig {
 }
 
 const DEFAULTS: PersonalizacaoConfig = {
-  cor_primaria: '#ec4899',
+  cor_primaria: '#0891b2',
   cor_primaria_texto: '#ffffff',
-  cor_fundo: '#f9fafb',
-  cor_sidebar: '#ec4899',
+  cor_fundo: '#ffffff',
+  cor_sidebar: '#0891b2',
   cor_card: '#ffffff',
   cor_card_texto: '#374151',
   nome_empresa: '',
   logo_url: null,
   logo_size: 'md',
-  cor_primaria_grad: '#a855f7',
+  cor_primaria_grad: '#0e7490',
   cor_fundo_grad: null,
-  cor_sidebar_grad: '#a855f7',
+  cor_sidebar_grad: '#0e7490',
   cor_card_grad: null,
   grad_direction: '135deg',
   cor_botao: '#ffffff',
-  cor_botao_texto: '#ec4899',
+  cor_botao_texto: '#0891b2',
   cor_icone: '#ffffff',
 }
 

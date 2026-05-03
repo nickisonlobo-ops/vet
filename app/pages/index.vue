@@ -18,7 +18,7 @@
                 </svg>
               </div>
               <div>
-                <p class="text-xs font-bold text-pink-100 uppercase tracking-widest">Clínica Veterinária</p>
+                <p class="text-xs font-bold text-pink-100 uppercase tracking-widest">VetFlow</p>
                 <h1 class="text-2xl font-black text-white leading-tight">
                   {{ funcionarioLogado ? `Olá, ${primeiroNome(funcionarioLogado.nome)}!` : 'Minhas Atividades' }}
                 </h1>
@@ -108,15 +108,21 @@
                     <span class="text-[10px] font-bold mt-1 rounded-full px-2 py-0.5" :class="dia.ehHoje ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500'">{{ (meuKanbanPorDia[dia.iso] ?? []).length }}</span>
                   </div>
                   <div class="flex flex-col gap-1.5 flex-1 rounded-2xl p-1 min-h-[48px]">
-                    <div v-for="ag in meuKanbanPorDia[dia.iso]" :key="ag.id" class="rounded-xl border shadow-sm px-2.5 py-2 bg-white border-gray-200/80">
-                      <div class="h-0.5 w-full rounded-full mb-2" :class="agKanbanStatusCor(ag.status)" />
+                    <div v-for="ag in meuKanbanPorDia[dia.iso]" :key="ag.id" class="rounded-xl border shadow-sm px-2.5 py-2 bg-white border-gray-200/80 cursor-pointer hover:shadow-md hover:border-pink-200 transition-all" @click="abrirDetalheKanban(ag)">
+                      <div class="h-1 w-full rounded-full mb-2" :class="agKanbanStatusCor(ag.status)" />
+                      <div class="flex items-center justify-between gap-1 mb-1">
+                        <p class="text-[11px] font-black leading-none" :style="{ color: 'var(--color-primary, #ec4899)' }">{{ agKanbanFormatHora(ag.data_hora) }}</p>
+                        <span class="inline-flex items-center rounded-full px-1.5 py-0.5 text-[8px] font-bold leading-none" :class="agKanbanStatusBadge(ag.status)">{{ agKanbanStatusLabel(ag.status) }}</span>
+                      </div>
                       <p class="text-xs font-bold text-gray-900 truncate leading-tight">{{ ag.cliente_nome ?? ag.nome_solicitante ?? '\u2014' }}</p>
-                      <p class="text-[10px] font-semibold mt-0.5" :style="{ color: 'var(--color-primary, #ec4899)' }">{{ agKanbanFormatHora(ag.data_hora) }}</p>
-                      <p v-if="ag.servicos_nomes" class="text-[10px] text-gray-400 mt-0.5 truncate">{{ ag.servicos_nomes }}</p>
-                      <p v-if="ag.funcionario_nome" class="text-[10px] text-indigo-500 font-semibold mt-0.5 truncate">👤 {{ ag.funcionario_nome }}</p>
-                      <span class="inline-flex mt-1.5 items-center rounded-full px-1.5 py-0.5 text-[9px] font-semibold" :class="agKanbanStatusBadge(ag.status)">{{ agKanbanStatusLabel(ag.status) }}</span>
-                      <a v-if="ag.cliente_telefone" :href="`https://wa.me/55${ag.cliente_telefone.replace(/\D/g, '')}`" target="_blank" rel="noopener noreferrer" class="mt-1.5 flex items-center justify-center w-full py-1 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors">
-                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                      <p v-if="ag.animal_nome" class="text-[10px] font-semibold text-pink-500 leading-tight truncate">🐾 {{ ag.animal_nome }}</p>
+                      <div v-if="ag.servicos_nomes || ag.funcionario_nome" class="mt-1.5 pt-1 border-t border-gray-100 space-y-0.5">
+                        <p v-if="ag.servicos_nomes" class="text-[10px] text-gray-400 truncate">{{ ag.servicos_nomes }}</p>
+                        <p v-if="ag.funcionario_nome" class="text-[10px] text-indigo-500 font-semibold truncate">👤 {{ ag.funcionario_nome }}</p>
+                      </div>
+                      <a v-if="ag.cliente_telefone" :href="`https://wa.me/55${ag.cliente_telefone.replace(/\D/g, '')}`" target="_blank" rel="noopener noreferrer" class="mt-2 flex items-center justify-center gap-1.5 w-full py-1.5 rounded-lg bg-green-500 text-white text-[10px] font-bold hover:bg-green-600 transition-colors" @click.stop>
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        <span>WhatsApp</span>
                       </a>
                     </div>
                   </div>
@@ -130,15 +136,21 @@
                     <span class="text-[10px] font-bold mt-1 rounded-full px-2 py-0.5" :class="dia.ehHoje ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500'">{{ (meuKanbanPorDia[dia.iso] ?? []).length }}</span>
                   </div>
                   <div class="flex flex-col gap-1.5 flex-1 rounded-2xl p-1 min-h-[48px]">
-                    <div v-for="ag in meuKanbanPorDia[dia.iso]" :key="ag.id" class="rounded-xl border shadow-sm px-2.5 py-2 bg-white border-gray-200/80">
-                      <div class="h-0.5 w-full rounded-full mb-2" :class="agKanbanStatusCor(ag.status)" />
+                    <div v-for="ag in meuKanbanPorDia[dia.iso]" :key="ag.id" class="rounded-xl border shadow-sm px-2.5 py-2 bg-white border-gray-200/80 cursor-pointer hover:shadow-md hover:border-pink-200 transition-all" @click="abrirDetalheKanban(ag)">
+                      <div class="h-1 w-full rounded-full mb-2" :class="agKanbanStatusCor(ag.status)" />
+                      <div class="flex items-center justify-between gap-1 mb-1">
+                        <p class="text-[11px] font-black leading-none" :style="{ color: 'var(--color-primary, #ec4899)' }">{{ agKanbanFormatHora(ag.data_hora) }}</p>
+                        <span class="inline-flex items-center rounded-full px-1.5 py-0.5 text-[8px] font-bold leading-none" :class="agKanbanStatusBadge(ag.status)">{{ agKanbanStatusLabel(ag.status) }}</span>
+                      </div>
                       <p class="text-xs font-bold text-gray-900 truncate leading-tight">{{ ag.cliente_nome ?? ag.nome_solicitante ?? '\u2014' }}</p>
-                      <p class="text-[10px] font-semibold mt-0.5" :style="{ color: 'var(--color-primary, #ec4899)' }">{{ agKanbanFormatHora(ag.data_hora) }}</p>
-                      <p v-if="ag.servicos_nomes" class="text-[10px] text-gray-400 mt-0.5 truncate">{{ ag.servicos_nomes }}</p>
-                      <p v-if="ag.funcionario_nome" class="text-[10px] text-indigo-500 font-semibold mt-0.5 truncate">👤 {{ ag.funcionario_nome }}</p>
-                      <span class="inline-flex mt-1.5 items-center rounded-full px-1.5 py-0.5 text-[9px] font-semibold" :class="agKanbanStatusBadge(ag.status)">{{ agKanbanStatusLabel(ag.status) }}</span>
-                      <a v-if="ag.cliente_telefone" :href="`https://wa.me/55${ag.cliente_telefone.replace(/\D/g, '')}`" target="_blank" rel="noopener noreferrer" class="mt-1.5 flex items-center justify-center w-full py-1 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors">
-                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                      <p v-if="ag.animal_nome" class="text-[10px] font-semibold text-pink-500 leading-tight truncate">🐾 {{ ag.animal_nome }}</p>
+                      <div v-if="ag.servicos_nomes || ag.funcionario_nome" class="mt-1.5 pt-1 border-t border-gray-100 space-y-0.5">
+                        <p v-if="ag.servicos_nomes" class="text-[10px] text-gray-400 truncate">{{ ag.servicos_nomes }}</p>
+                        <p v-if="ag.funcionario_nome" class="text-[10px] text-indigo-500 font-semibold truncate">👤 {{ ag.funcionario_nome }}</p>
+                      </div>
+                      <a v-if="ag.cliente_telefone" :href="`https://wa.me/55${ag.cliente_telefone.replace(/\D/g, '')}`" target="_blank" rel="noopener noreferrer" class="mt-2 flex items-center justify-center gap-1.5 w-full py-1.5 rounded-lg bg-green-500 text-white text-[10px] font-bold hover:bg-green-600 transition-colors" @click.stop>
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        <span>WhatsApp</span>
                       </a>
                     </div>
                   </div>
@@ -155,15 +167,21 @@
                   <span class="text-[10px] font-bold mt-1 rounded-full px-2 py-0.5" :class="dia.ehHoje ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500'">{{ (meuKanbanPorDia[dia.iso] ?? []).length }}</span>
                 </div>
                 <div class="flex flex-col gap-1.5 flex-1 rounded-2xl p-1 min-h-[48px]">
-                  <div v-for="ag in meuKanbanPorDia[dia.iso]" :key="ag.id" class="rounded-xl border shadow-sm px-2.5 py-2 bg-white border-gray-200/80">
-                    <div class="h-0.5 w-full rounded-full mb-2" :class="agKanbanStatusCor(ag.status)" />
+                  <div v-for="ag in meuKanbanPorDia[dia.iso]" :key="ag.id" class="rounded-xl border shadow-sm px-2.5 py-2 bg-white border-gray-200/80 cursor-pointer hover:shadow-md hover:border-pink-200 transition-all" @click="abrirDetalheKanban(ag)">
+                    <div class="h-1 w-full rounded-full mb-2" :class="agKanbanStatusCor(ag.status)" />
+                    <div class="flex items-center justify-between gap-1 mb-1">
+                      <p class="text-[11px] font-black leading-none" :style="{ color: 'var(--color-primary, #ec4899)' }">{{ agKanbanFormatHora(ag.data_hora) }}</p>
+                      <span class="inline-flex items-center rounded-full px-1.5 py-0.5 text-[8px] font-bold leading-none" :class="agKanbanStatusBadge(ag.status)">{{ agKanbanStatusLabel(ag.status) }}</span>
+                    </div>
                     <p class="text-xs font-bold text-gray-900 truncate leading-tight">{{ ag.cliente_nome ?? ag.nome_solicitante ?? '\u2014' }}</p>
-                    <p class="text-[10px] font-semibold mt-0.5" :style="{ color: 'var(--color-primary, #ec4899)' }">{{ agKanbanFormatHora(ag.data_hora) }}</p>
-                    <p v-if="ag.servicos_nomes" class="text-[10px] text-gray-400 mt-0.5 truncate">{{ ag.servicos_nomes }}</p>
-                    <p v-if="ag.funcionario_nome" class="text-[10px] text-indigo-500 font-semibold mt-0.5 truncate">👤 {{ ag.funcionario_nome }}</p>
-                    <span class="inline-flex mt-1.5 items-center rounded-full px-1.5 py-0.5 text-[9px] font-semibold" :class="agKanbanStatusBadge(ag.status)">{{ agKanbanStatusLabel(ag.status) }}</span>
-                    <a v-if="ag.cliente_telefone" :href="`https://wa.me/55${ag.cliente_telefone.replace(/\D/g, '')}`" target="_blank" rel="noopener noreferrer" class="mt-1.5 flex items-center justify-center w-full py-1 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors">
-                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    <p v-if="ag.animal_nome" class="text-[10px] font-semibold text-pink-500 leading-tight truncate">🐾 {{ ag.animal_nome }}</p>
+                    <div v-if="ag.servicos_nomes || ag.funcionario_nome" class="mt-1.5 pt-1 border-t border-gray-100 space-y-0.5">
+                      <p v-if="ag.servicos_nomes" class="text-[10px] text-gray-400 truncate">{{ ag.servicos_nomes }}</p>
+                      <p v-if="ag.funcionario_nome" class="text-[10px] text-indigo-500 font-semibold truncate">👤 {{ ag.funcionario_nome }}</p>
+                    </div>
+                    <a v-if="ag.cliente_telefone" :href="`https://wa.me/55${ag.cliente_telefone.replace(/\D/g, '')}`" target="_blank" rel="noopener noreferrer" class="mt-2 flex items-center justify-center gap-1.5 w-full py-1.5 rounded-lg bg-green-500 text-white text-[10px] font-bold hover:bg-green-600 transition-colors" @click.stop>
+                      <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                      <span>WhatsApp</span>
                     </a>
                   </div>
                 </div>
@@ -320,7 +338,7 @@
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.2),transparent_60%)]" />
             <div class="relative flex items-center gap-4">
               <div class="shrink-0 w-14 h-14 rounded-2xl bg-white/20 border border-white/30 flex items-center justify-center text-3xl select-none">
-                �Y�?
+                🐾
               </div>
               <div>
                 <p class="text-base font-black text-white leading-tight">Parabéns, {{ funcionarioLogado ? primeiroNome(funcionarioLogado.nome) : 'campeão' }}!</p>
@@ -383,7 +401,7 @@
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15),transparent_60%)]" />
         <div class="relative px-6 sm:px-10 py-6 flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p class="text-[11px] font-bold uppercase tracking-[0.25em] text-pink-100 mb-1">Clínica Veterinária · Painel Admin</p>
+            <p class="text-[11px] font-bold uppercase tracking-[0.25em] text-pink-100 mb-1">VetFlow · Painel Admin</p>
             <h1 class="text-xl sm:text-3xl font-black text-white leading-tight">Visão Geral do Negócio</h1>
             <p class="text-sm text-gray-300/70 mt-1">{{ dataHoje }}</p>
           </div>
@@ -630,6 +648,104 @@
       <span class="inline-block w-10 h-10 border-4 border-pink-500 border-t-transparent rounded-full animate-spin" />
     </div>
   </div>
+
+  <!-- Modal detalhe agendamento (funcionário) -->
+  <Teleport to="body">
+    <Transition name="fade">
+      <div v-if="detalheKanban" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4" @click.self="detalheKanban = null">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" @click="detalheKanban = null" />
+        <div class="relative w-full max-w-sm bg-white rounded-3xl shadow-2xl overflow-hidden">
+          <!-- Cabeçalho colorido com status -->
+          <div class="h-1.5 w-full" :class="agKanbanStatusCor(detalheKanban.status)" />
+          <div class="px-6 pt-5 pb-2 flex items-start justify-between gap-3">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-0.5">Agendamento</p>
+              <p class="text-lg font-black text-gray-900 leading-tight">{{ detalheKanban.cliente_nome ?? detalheKanban.nome_solicitante ?? '—' }}</p>
+            </div>
+            <button type="button" class="shrink-0 w-8 h-8 flex items-center justify-center rounded-xl bg-gray-100 text-gray-500 hover:bg-gray-200 transition-colors mt-0.5" @click="detalheKanban = null">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+
+          <div class="px-6 pb-6 flex flex-col gap-3">
+            <!-- Data/hora -->
+            <div class="flex items-center gap-3 bg-gray-50 rounded-2xl px-4 py-3">
+              <svg class="w-4 h-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <div>
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Data e hora</p>
+                <p class="text-sm font-bold text-gray-800">
+                  {{ new Date(detalheKanban.data_hora.slice(0,10) + 'T12:00:00').toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: 'long' }) }}
+                  · {{ agKanbanFormatHora(detalheKanban.data_hora) }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Animal -->
+            <div v-if="detalheKanban.animal_nome" class="flex items-center gap-3 bg-pink-50 rounded-2xl px-4 py-3">
+              <span class="text-base">🐾</span>
+              <div>
+                <p class="text-[10px] font-bold text-pink-400 uppercase tracking-widest">Pet</p>
+                <p class="text-sm font-bold text-pink-700">{{ detalheKanban.animal_nome }}</p>
+              </div>
+            </div>
+
+            <!-- Serviços -->
+            <div v-if="detalheKanban.servicos_nomes" class="flex items-center gap-3 bg-gray-50 rounded-2xl px-4 py-3">
+              <svg class="w-4 h-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <div>
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Serviço(s)</p>
+                <p class="text-sm font-semibold text-gray-800">{{ detalheKanban.servicos_nomes }}</p>
+              </div>
+            </div>
+
+            <!-- Profissional -->
+            <div v-if="detalheKanban.funcionario_nome" class="flex items-center gap-3 bg-indigo-50 rounded-2xl px-4 py-3">
+              <svg class="w-4 h-4 shrink-0 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+              <div>
+                <p class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">Profissional</p>
+                <p class="text-sm font-bold text-indigo-700">{{ detalheKanban.funcionario_nome }}</p>
+              </div>
+            </div>
+
+            <!-- Observações -->
+            <div v-if="detalheKanban.observacoes" class="flex items-start gap-3 bg-amber-50 rounded-2xl px-4 py-3">
+              <svg class="w-4 h-4 shrink-0 text-amber-400 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <div>
+                <p class="text-[10px] font-bold text-amber-500 uppercase tracking-widest">Observações</p>
+                <p class="text-sm text-amber-800">{{ detalheKanban.observacoes }}</p>
+              </div>
+            </div>
+
+            <!-- Status + ações -->
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-semibold" :class="agKanbanStatusBadge(detalheKanban.status)">{{ agKanbanStatusLabel(detalheKanban.status) }}</span>
+              <div class="flex items-center gap-2">
+                <NuxtLink
+                  v-if="detalheKanban.animal_id"
+                  :to="`/prontuarios?animal_id=${detalheKanban.animal_id}&agendamento_id=${detalheKanban.id}`"
+                  class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-violet-500 text-white text-xs font-bold hover:bg-violet-600 transition-colors"
+                  @click="detalheKanban = null"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  Prontuário
+                </NuxtLink>
+                <a
+                  v-if="detalheKanban.cliente_telefone"
+                  :href="`https://wa.me/55${detalheKanban.cliente_telefone.replace(/\D/g, '')}`"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-500 text-white text-sm font-bold hover:bg-green-600 transition-colors"
+                >
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
@@ -858,14 +974,14 @@ function concluidasTab(tab: string): AtividadeFuncionario[] {
 }
 
 const frasesMotivacionais = [
-  'Cada cliente que sai daqui carrega sua arte no rosto!',
-  'Beleza é o reflexo do cuidado que você dedica a cada atendimento.',
-  'Um serviço especial faz toda a diferença no dia do cliente!',
-  'Sua habilidade transforma autoestima — isso é incrível!',
-  'Organização e dedicação são o segredo de um salão de sucesso.',
-  'Hoje é mais um dia para encantar e fazer a diferença!',
-  'Cada detalhe importa quando o objetivo é a excelência.',
-  'Clientes satisfeitos são a melhor propaganda do seu trabalho.',
+  'Cada animal cuidado aqui sai mais saudável e feliz — graças a você!',
+  'O bem-estar animal começa com profissionais dedicados como você.',
+  'Um atendimento com carinho faz toda a diferença na vida do pet!',
+  'Sua habilidade salva e transforma vidas — isso é incrível!',
+  'Organização e dedicação são o segredo de uma clínica de excelência.',
+  'Hoje é mais um dia para cuidar, curar e fazer a diferença!',
+  'Cada detalhe importa quando o objetivo é a saúde do animal.',
+  'Tutores satisfeitos são a melhor propaganda do seu trabalho.',
 ]
 const fraseAtual = computed(() => {
   const idx = new Date().getDate() % frasesMotivacionais.length
@@ -987,6 +1103,9 @@ interface AgKanban {
   cliente_telefone: string | null
   servicos_nomes: string | null
   funcionario_nome: string | null
+  animal_id: number | null
+  animal_nome: string | null
+  observacoes: string | null
 }
 
 const meuKanban          = ref<AgKanban[]>([])
@@ -1051,7 +1170,7 @@ function meuKanbanIrParaHoje() {
   meuKanbanSemanaInicio.value = getMondayOfWeekFun(new Date())
 }
 
-function agKanbanFormatHora(iso: string) { return iso.slice(11, 16) }
+function agKanbanFormatHora(iso: string) { return new Date(iso).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'America/Sao_Paulo' }) }
 
 function agKanbanStatusCor(s: string) {
   return { solicitado: 'bg-amber-400', agendado: 'bg-blue-400', confirmado: 'bg-green-400', concluido: 'bg-violet-500', cancelado: 'bg-red-400', faltou: 'bg-orange-400' }[s] ?? 'bg-gray-300'
@@ -1063,13 +1182,16 @@ function agKanbanStatusLabel(s: string) {
   return { solicitado: 'Solicitado', agendado: 'Agendado', confirmado: 'Confirmado', concluido: 'Concluído', cancelado: 'Cancelado', faltou: 'Faltou' }[s] ?? s
 }
 
+const detalheKanban = ref<AgKanban | null>(null)
+function abrirDetalheKanban(ag: AgKanban) { detalheKanban.value = ag }
+
 async function fetchMeuKanban(userId: string, funcId: number, eId: number) {
   meuKanbanLoading.value = true
 
   // Estratégia 1: agendamentos onde funcionario_id = uuid do usuário logado
   const { data: rowsByUuid } = await supabase
     .from('agendamentos')
-    .select('id, data_hora, status, nome_solicitante, telefone_solicitante, funcionario_id, clientes(nome, telefone)')
+    .select('id, data_hora, status, observacoes, nome_solicitante, telefone_solicitante, funcionario_id, animal_id, clientes(nome, telefone), animais(nome)')
     .eq('empresa_id', eId)
     .eq('funcionario_id', userId)
     .not('status', 'in', '(cancelado,faltou)')
@@ -1094,7 +1216,7 @@ async function fetchMeuKanban(userId: string, funcId: number, eId: number) {
     if (agIds.length) {
       const { data: rowsSvc } = await supabase
         .from('agendamentos')
-        .select('id, data_hora, status, nome_solicitante, telefone_solicitante, funcionario_id, clientes(nome, telefone)')
+        .select('id, data_hora, status, observacoes, nome_solicitante, telefone_solicitante, funcionario_id, animal_id, clientes(nome, telefone), animais(nome)')
         .eq('empresa_id', eId)
         .in('id', agIds)
         .not('status', 'in', '(cancelado,faltou)')
@@ -1151,11 +1273,14 @@ async function fetchMeuKanban(userId: string, funcId: number, eId: number) {
     id:               r.id,
     data_hora:        r.data_hora,
     status:           r.status,
+    observacoes:      r.observacoes ?? null,
     cliente_nome:     r.clientes?.nome ?? null,
     nome_solicitante: r.nome_solicitante ?? null,
     cliente_telefone: r.clientes?.telefone ?? r.telefone_solicitante ?? null,
     servicos_nomes:   servicosMap[r.id]?.join(', ') ?? null,
     funcionario_nome: funcNomeByUuid[r.funcionario_id] ?? null,
+    animal_nome:      r.animais?.nome ?? null,
+    animal_id:        r.animal_id ?? null,
   }))
   meuKanbanLoading.value = false
 }
@@ -1218,3 +1343,14 @@ const atalhosVisiveis = computed(() =>
   atalhos.filter(item => item.minPerfil === 'all' || isAdminOrGerente.value)
 )
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.18s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

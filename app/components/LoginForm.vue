@@ -9,7 +9,7 @@
         </svg>
       </div>
       <div class="text-center">
-        <h1 class="text-2xl font-black tracking-tight" style="background: linear-gradient(135deg, #0d9488, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text">Clínica Veterinária</h1>
+        <h1 class="text-2xl font-black tracking-tight" style="background: linear-gradient(135deg, #0d9488, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text">VetFlow</h1>
         <p class="text-sm text-gray-500 mt-0.5">Sua plataforma veterinária</p>
       </div>
     </div>

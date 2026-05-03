@@ -578,6 +578,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import { createSupabaseClient } from '~/lib/supabase'
 import { useAdmin } from '~/composables/useAdmin'
 import { useEmpresa } from '~/composables/useEmpresa'
@@ -842,9 +843,20 @@ async function fetchFuncionarios() {
   ) as FuncionarioOption[]
 }
 
+const route = useRoute()
+
 onMounted(async () => {
   await loadEmpresa()
   await Promise.all([fetchProntuarios(), fetchAnimais(), fetchFuncionarios()])
+
+  // Abrir modal de novo prontuário pré-preenchido via query params (vindo do kanban)
+  const qAnimalId = route.query.animal_id
+  if (qAnimalId) {
+    resetForm()
+    form.animal_id = Number(qAnimalId)
+    adicionando.value = true
+    editando.value = null
+  }
 })
 
 // ── CRUD ──────────────────────────────────────────────────────

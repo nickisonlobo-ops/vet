@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="min-h-screen font-sans antialiased overflow-x-hidden" style="background: #f0fdfa; color: #134e4a">
 
     <!-- NAV -->
@@ -16,7 +16,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 22c-4 0-7-3-7-7 0-2 1-4 2.5-5.5 1.5-1.5 3-2 4.5-2s3 .5 4.5 2C18 11 19 13 19 15c0 4-3 7-7 7z"/>
             </svg>
           </div>
-          <span class="nav-logo__text">Clínica Vet</span>
+          <span class="nav-logo__text">VetFlow</span>
         </NuxtLink>
 
         <!-- Desktop links -->
@@ -27,7 +27,7 @@
         <!-- Desktop actions -->
         <div class="nav-actions">
           
-          <a href="https://wa.me/5511940527609" target="_blank" rel="noopener noreferrer" class="nav-btn-primary">Experimentar grátis</a>
+          <a href="/login?tab=register" class="nav-btn-primary">Experimentar grátis</a>
         </div>
 
         <!-- Hamburger (mobile) -->
@@ -43,8 +43,8 @@
       <div v-if="mobileOpen" class="nav-mobile">
         <a v-for="link in navLinks" :key="link.href" :href="link.href" class="nav-mobile__link" @click="mobileOpen = false">{{ link.label }}</a>
         <div class="nav-mobile__actions">
-          <a href="https://wa.me/5511940527609" target="_blank" rel="noopener noreferrer" class="nav-btn-ghost" @click="mobileOpen = false">Entrar</a>
-          <a href="https://wa.me/5511940527609" target="_blank" rel="noopener noreferrer" class="nav-btn-primary" @click="mobileOpen = false">Experimentar grátis</a>
+          <a href="/login" class="nav-btn-ghost" @click="mobileOpen = false">Entrar</a>
+          <a href="/login?tab=register" class="nav-btn-primary" @click="mobileOpen = false">Experimentar grátis</a>
         </div>
       </div>
     </nav>
@@ -66,33 +66,34 @@
       <div class="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 text-center">
         <!-- Badge -->
         <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-teal-100 border border-teal-200 mb-10 shadow-sm">
-          <svg class="w-3.5 h-3.5 text-teal-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
-          <span class="text-xs font-bold text-teal-600 tracking-wider uppercase">Para clínicas, pet shops e veterinários</span>
+          <span class="text-xs font-black text-white bg-teal-500 rounded-full px-2 py-0.5">NOVO</span>
+          <span class="text-xs font-bold text-teal-600 tracking-wider uppercase">VetFlow — sistema veterinário completo</span>
         </div>
 
         <!-- Headline -->
         <h1 class="font-black tracking-tight mb-6" style="line-height: 1.04;">
-          <span class="block" style="font-size: clamp(2.4rem, 6vw, 4.8rem); background: linear-gradient(135deg, #0f766e, #0e7490); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Organize a agenda,</span>
-          <span class="block" style="font-size: clamp(2.4rem, 6vw, 4.8rem); background: linear-gradient(135deg, #0f766e, #0e7490); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">cuide dos pacientes</span>
-          <span class="block mt-2" style="font-size: clamp(2.2rem, 5.5vw, 4.4rem); background: linear-gradient(135deg, #2dd4bf, #0891b2, #0284c7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">e deixe o sistema</span>
-          <span class="block" style="font-size: clamp(2.2rem, 5.5vw, 4.4rem); background: linear-gradient(135deg, #2dd4bf, #0891b2, #0284c7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">trabalhar por você.</span>
+          <span class="block" style="font-size: clamp(2.4rem, 6vw, 4.8rem); background: linear-gradient(135deg, #0f766e, #0e7490); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Prontuário perdido.</span>
+          <span class="block" style="font-size: clamp(2.4rem, 6vw, 4.8rem); background: linear-gradient(135deg, #0f766e, #0e7490); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Vacina vencendo sem aviso.</span>
+          <span class="block mt-2" style="font-size: clamp(2.2rem, 5.5vw, 4.4rem); background: linear-gradient(135deg, #2dd4bf, #0891b2, #0284c7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Sua clínica precisa de um</span>
+          <span class="block" style="font-size: clamp(2.2rem, 5.5vw, 4.4rem); background: linear-gradient(135deg, #2dd4bf, #0891b2, #0284c7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">sistema que não te abandona.</span>
         </h1>
 
         <!-- Subheadline -->
         <p class="text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style="color: rgba(15,70,60,0.6)">
-          A plataforma completa para <strong class="text-teal-500 font-semibold">clínicas veterinárias</strong>, <strong class="text-cyan-600 font-semibold">pet shops</strong> e <strong class="text-teal-500 font-semibold">consultórios veterinários</strong> que querem mais agendamentos, menos faltas e controle total dos pacientes — do cadastro ao financeiro, tudo em um só lugar.
+          Agenda inteligente, prontuário digital, controle financeiro e gestão de equipe — feito para <strong class="text-teal-500 font-semibold">veterinários</strong> que querem atender mais e administrar menos.
         </p>
 
         <!-- CTAs -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
-          <a href="https://wa.me/5511940527609" target="_blank" rel="noopener noreferrer"
-            class="inline-flex items-center text-base font-black px-10 py-4 rounded-full text-white transition-all duration-200 hover:scale-105"
+          <a href="/login?tab=register"
+            class="inline-flex items-center gap-2 text-base font-black px-10 py-4 rounded-full text-white transition-all duration-200 hover:scale-105"
             style="background: linear-gradient(135deg, #2dd4bf, #0891b2); box-shadow: 0 8px 28px rgba(13,148,136,0.4);">
-            Entrar em contato
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            Criar conta grátis
           </a>
-          <a href="#funcionalidades"
+          <a href="#precos"
             class="inline-flex items-center gap-2 text-base font-semibold px-8 py-4 rounded-full border-2 border-teal-200 text-teal-500 bg-white hover:bg-teal-50 hover:border-teal-300 transition-all duration-200 shadow-sm">
-            Ver como funciona
+            Ver planos e preços
           </a>
         </div>
 
@@ -114,8 +115,38 @@
           <span class="text-teal-200 hidden sm:inline">|</span>
           <div class="flex items-center gap-1.5">
             <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <span>Sem cartão de crédito</span>
+            <span>7 dias grátis, sem cartão</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DORES -->
+    <section class="py-16 sm:py-20 relative" style="background: linear-gradient(180deg, #f0fdfa 0%, #ecfeff 100%)">
+      <div class="max-w-5xl mx-auto px-5 sm:px-10">
+        <div class="text-center mb-12">
+          <p class="section-label">Reconhece isso?</p>
+          <h2 class="text-3xl sm:text-4xl font-black mb-3" style="background: linear-gradient(135deg, #0d9488, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">O dia a dia sem um sistema organizado</h2>
+          <p class="text-teal-900/50 max-w-md mx-auto">Essas dores custam tempo, dinheiro e pacientes. Você não precisa mais viver assim.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div v-for="dor in dores" :key="dor.titulo"
+            class="flex items-start gap-4 p-5 rounded-2xl bg-white border border-teal-100 shadow-sm">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-teal-50 border border-teal-100">
+              <svg class="w-5 h-5 text-teal-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" v-html="dor.svg"></svg>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-gray-800 mb-1">{{ dor.titulo }}</p>
+              <p class="text-xs text-gray-500 leading-relaxed">{{ dor.desc }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10 text-center">
+          <a href="/login?tab=register"
+            class="inline-flex items-center gap-2 text-sm font-black px-8 py-3.5 rounded-full text-white transition-all duration-200 hover:scale-105"
+            style="background: linear-gradient(135deg, #2dd4bf, #0891b2); box-shadow: 0 6px 20px rgba(13,148,136,0.35)">
+            Quero resolver isso agora
+          </a>
         </div>
       </div>
     </section>
@@ -124,7 +155,7 @@
     <section class="py-16 sm:py-24 relative" style="background: linear-gradient(180deg, #f0fdfa 0%, #f0fdfa 100%)">
       <div class="max-w-5xl mx-auto px-5 sm:px-10">
         <div class="text-center mb-12">
-          <p class="section-label">Para quem e</p>
+          <p class="section-label">Para quem é</p>
           <h2 class="text-4xl sm:text-5xl font-black mb-3" style="background: linear-gradient(135deg, #0d9488, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Feito para o seu negócio veterinário</h2>
           <p class="text-teal-900/50 max-w-md mx-auto mt-2">De clínicas a petshops, se você cuida de animais, essa plataforma é para você.</p>
         </div>
@@ -508,7 +539,7 @@
       <div class="max-w-4xl mx-auto px-5 sm:px-10">
         <div class="text-center mb-14">
           <p class="section-label">Simples assim</p>
-          <h2 class="text-4xl sm:text-5xl font-black mb-3" style="background: linear-gradient(135deg, #0d9488, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Comeca em 3 passos</h2>
+          <h2 class="text-4xl sm:text-5xl font-black mb-3" style="background: linear-gradient(135deg, #0d9488, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Começa em 3 passos</h2>
           <p class="text-teal-900/50 max-w-md mx-auto">Sem complicação. Em 5 minutos sua conta está criada e funcionando.</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 relative">
@@ -560,7 +591,7 @@
         <div class="text-center mb-12">
           <p class="section-label">Planos</p>
           <h2 class="text-4xl sm:text-5xl font-black mb-3" style="background: linear-gradient(135deg, #0d9488, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Investimento que cabe no seu orçamento</h2>
-          <p class="text-teal-900/50 max-w-sm mx-auto">Planos a partir de R$97/mês. Cancele quando quiser.</p>
+          <p class="text-teal-900/50 max-w-sm mx-auto">Todas as funcionalidades em todos os planos. Cancele quando quiser.</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
           <div v-for="plan in plans" :key="plan.name"
@@ -586,7 +617,9 @@
                 {{ item }}
               </li>
             </ul>
-            <a href="https://wa.me/5511940527609" target="_blank" rel="noopener noreferrer"
+            <a :href="plan.url"
+              :target="plan.url.startsWith('http') ? '_blank' : undefined"
+              :rel="plan.url.startsWith('http') ? 'noopener noreferrer' : undefined"
               class="mt-2 w-full py-3.5 rounded-full text-sm font-black text-center transition-all duration-200 hover:scale-[1.02] block"
               :class="plan.featured ? 'text-white shadow-lg hover:shadow-teal-300/60' : 'border-2 border-teal-200 text-teal-500 hover:border-teal-400 hover:bg-teal-50'"
               :style="plan.featured ? 'background: linear-gradient(135deg, #2dd4bf, #0891b2)' : ''">
@@ -594,7 +627,7 @@
             </a>
           </div>
         </div>
-        <p class="text-center text-xs text-teal-900/35 mt-8">Suporte via WhatsApp em todos os planos. Sem fidelidade. Cancele quando quiser.</p>
+        <p class="text-center text-xs text-teal-900/35 mt-8">✅ 7 dias grátis em todos os planos · Sem cartão de crédito · Sem fidelidade · Cancele quando quiser</p>
       </div>
     </section>
 
@@ -633,15 +666,15 @@
           <svg class="w-7 h-7 text-teal-400" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
         </div>
         <h2 class="text-3xl sm:text-5xl font-black mb-5 leading-tight" style="background: linear-gradient(135deg, #0d9488, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-          Sua cliente merece uma experiência incrível
+          Seus pacientes merecem o melhor. <br class="hidden sm:block">Sua clínica também.
         </h2>
         <p class="text-teal-900/55 text-lg mb-10 max-w-md mx-auto leading-relaxed">
-          E voce merece um sistema que organiza tudo sem dor de cabeca. Comece hoje, de graça.
+          Experimente 7 dias grátis. Sem cartão, sem burocracia. Se não mudar sua rotina, cancele com um clique.
         </p>
-        <a href="https://wa.me/5511940527609" target="_blank" rel="noopener noreferrer"
+        <a href="/login?tab=register"
           class="inline-flex items-center gap-3 text-lg font-black px-12 py-5 rounded-full text-white shadow-2xl shadow-teal-300/50 transition-all duration-200 hover:scale-105 hover:shadow-teal-400/60"
           style="background: linear-gradient(135deg, #2dd4bf, #0891b2)">
-          Começar agora, de graça
+          Começar agora
         </a>
         <p class="text-xs text-teal-900/35 mt-5">Sem cartão de crédito. Pronto em 5 minutos. Suporte via WhatsApp.</p>
       </div>
@@ -659,7 +692,7 @@
           <span class="text-sm font-black" style="background: linear-gradient(135deg, #0d9488, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text">Clínica Vet</span>
         </div>
         <p class="text-xs text-teal-900/35 text-center">2026 Clínica Vet. Feito com cuidado para profissionais veterinários.</p>
-        <a href="https://wa.me/5511940527609" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-teal-400 hover:text-teal-600 transition-colors">Acessar plataforma</a>
+        <a href="/login" class="text-xs font-semibold text-teal-400 hover:text-teal-600 transition-colors">Acessar plataforma</a>
       </div>
     </footer>
 
@@ -704,6 +737,15 @@ const navLinks = [
 const avatarColors   = ['linear-gradient(135deg,#2dd4bf,#0891b2)', 'linear-gradient(135deg,#22d3ee,#0e7490)', 'linear-gradient(135deg,#38bdf8,#0284c7)', 'linear-gradient(135deg,#2dd4bf,#22d3ee)']
 const avatarInitials = ['C', 'F', 'B', 'J']
 
+const dores = [
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25"/>', titulo: 'Dois pacientes no mesmo horário', desc: 'Conflito de agenda e constrangimento na recepção. O tutor vai embora frustrado e não volta.' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>', titulo: 'Vacina vencida sem aviso', desc: 'O tutor liga perguntando sobre a dose e você não sabe responder. Credibilidade perdida em segundos.' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108"/>', titulo: 'Prontuário de papel sumiu', desc: 'Na hora da cirurgia, o histórico do animal não está em lugar nenhum. Pânico e retrabalho.' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75"/>', titulo: 'Caixa no papel, números errados', desc: 'No fim do mês você não sabe se teve lucro ou prejuízo. Impossivel planejar ou crescer.' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12"/>', titulo: 'Medicamento acabou na hora errada', desc: 'Paciente em crise e a vacina acabou há 3 dias. O estoque era controlado “de memória”.' },
+  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72"/>', titulo: 'Equipe sem saber o que fazer', desc: 'Cada funcionário faz do jeito que quer. Sem tarefa definida, sem responsabilidade, sem padrão.' },
+]
+
 const mockAppts = [
   { init: 'R', name: 'Rex (Golden)',   service: 'Consulta Clínica', time: '14h00', color: 'linear-gradient(135deg,#2dd4bf,#0891b2)', accent: 'linear-gradient(90deg,#2dd4bf,#0891b2)', timeBg: '#ccfbf1', timeColor: '#0f766e' },
   { init: 'M', name: 'Mia (Siamesa)',  service: 'Vacinação',       time: '14h45', color: 'linear-gradient(135deg,#22d3ee,#0e7490)', accent: 'linear-gradient(90deg,#22d3ee,#0e7490)', timeBg: '#ecfeff', timeColor: '#0e7490' },
@@ -717,23 +759,11 @@ const mobileFeatures = [
 ]
 
 const tiposNegocio = [
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819"/>', label: 'Clínica Veterinária', bg: 'linear-gradient(135deg,#ccfbf1,#ecfeff)', color: '#0d9488' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z"/>',                                          label: 'Pet Shop',          bg: 'linear-gradient(135deg,#ede9fe,#ecfeff)', color: '#a855f7' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>',                    label: 'Consultório Vet',   bg: 'linear-gradient(135deg,#ccfbf1,#fee2e2)', color: '#0284c7' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64"/>',      label: 'Clínica Móvel',     bg: 'linear-gradient(135deg,#fff7ed,#ccfbf1)', color: '#fb923c' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>',   label: 'Cuidados Pet',      bg: 'linear-gradient(135deg,#f0fdf4,#ecfeff)', color: '#10b981' },
-]
-
-const features = [
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"/>',        color: '#0d9488', title: 'Agendamentos',        bg: 'linear-gradient(135deg,#ccfbf1,#ecfeff)', desc: 'Organize todos os horários da equipe. Evite conflitos e nunca perca um atendimento.' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>',            color: '#a855f7', title: 'Clientes',            bg: 'linear-gradient(135deg,#ede9fe,#ecfeff)', desc: 'Histórico completo de cada cliente: preferências, últimas visitas e contatos.' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>',          color: '#10b981', title: 'Atividades',          bg: 'linear-gradient(135deg,#ccfbf1,#fee2e2)', desc: 'Distribua tarefas por profissional, defina prioridades e acompanhe em tempo real.' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/>',           color: '#f59e0b', title: 'Financeiro',          bg: 'linear-gradient(135deg,#f0fdf4,#ccfbf1)', desc: 'Controle contas a pagar, categorize despesas e visualize o fluxo de caixa.' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>',  color: '#f97316', title: 'Produtos e Estoque', bg: 'linear-gradient(135deg,#fff7ed,#ccfbf1)', desc: 'Cadastre produtos com preço e controle de estoque. Saiba o que repor na hora.' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>',           color: '#8b5cf6', title: 'Equipe',             bg: 'linear-gradient(135deg,#ede9fe,#ccfbf1)', desc: 'Gerencie cargos, salários e acesso de cada profissional da equipe.' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/>',     color: '#0891b2', title: 'Personalização',     bg: 'linear-gradient(135deg,#ecfeff,#ede9fe)', desc: 'Cores, logo e nome da sua clínica. A plataforma com a identidade do seu negócio.' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/>',  color: '#0d9488', title: 'Prontuário Digital',  bg: 'linear-gradient(135deg,#ccfbf1,#f0fdf4)', desc: 'Registre consultas, vacinas, exames e evolução clínica de cada animal. Histórico completo na palma da mão.' },
-  { svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>',    color: '#10b981', title: 'Segurança Total',    bg: 'linear-gradient(135deg,#f0fdf4,#ecfeff)', desc: 'Dados isolados por clínica. Cada unidade vê apenas o que é dela, com acesso controlado.' },
+  { label: 'Clínica Veterinária',   color: '#0d9488', bg: 'linear-gradient(135deg,#ccfbf1,#ecfeff)', svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>' },
+  { label: 'Pet Shop',              color: '#a855f7', bg: 'linear-gradient(135deg,#ede9fe,#ecfeff)', svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"/>' },
+  { label: 'Hospital Veterinário',  color: '#0891b2', bg: 'linear-gradient(135deg,#ecfeff,#ccfbf1)', svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>' },
+  { label: 'Banho & Tosa',         color: '#f97316', bg: 'linear-gradient(135deg,#fff7ed,#ccfbf1)', svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/>' },
+  { label: 'Veterinário Autônomo',  color: '#10b981', bg: 'linear-gradient(135deg,#f0fdf4,#ecfeff)', svg: '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>' },
 ]
 
 const stats = [
@@ -750,42 +780,66 @@ const steps = [
 ]
 
 const reviews = [
-  { name: 'Dra. Camila Rocha',   role: 'Veterinária — São Paulo',         avatarBg: 'linear-gradient(135deg,#2dd4bf,#0891b2)', text: 'Acabei com a planilha de vez! Agenda organizada, sem conflito de horários e o caixa do mês na palma da mão.' },
-  { name: 'Fernanda Lima',      role: 'Gestora de Pet Shop — Rio de Janeiro', avatarBg: 'linear-gradient(135deg,#22d3ee,#0e7490)', text: 'O controle de estoque de medicamentos foi o que me conquistou. Sei exatamente o que comprar e nunca fico sem insumo.' },
-  { name: 'Dr. Bruno Santos',   role: 'Consultório Vet — Belo Horizonte',  avatarBg: 'linear-gradient(135deg,#38bdf8,#0284c7)', text: 'Tenho 4 funcionários e a gestão de atividades resolveu tudo. Acompanho tudo pelo celular.' },
-  { name: 'Juliana Melo',       role: 'Clínica Veterinária — Curitiba',    avatarBg: 'linear-gradient(135deg,#2dd4bf,#22d3ee)', text: 'A personalização me encantou. A plataforma ficou com as cores da minha clínica. Parece feita só pra mim!' },
-  { name: 'Patricia Alves',     role: 'Banho & Tosa — Porto Alegre',        avatarBg: 'linear-gradient(135deg,#34d399,#0ea5e9)', text: 'Nunca mais perdi data de conta a pagar. Organizado por categoria e com alertas. Minha saúde financeira melhorou!' },
-  { name: 'Renata Costa',       role: 'Clínica Móvel — Brasília',           avatarBg: 'linear-gradient(135deg,#fbbf24,#0284c7)', text: 'Testei 3 sistemas antes. Esse é o único que funciona sem precisar chamar suporte. Simples, bonito e completo.' },
+  { name: 'Dra. Camila Rocha',   role: 'Médica Veterinária CRMV-SP · Clínica própria',       avatarBg: 'linear-gradient(135deg,#2dd4bf,#0891b2)', text: 'Perdi um paciente por vacina vencida sem aviso. Depois do sistema, nunca mais. O histórico do animal fica todo lá, acessivo em 3 segundos.' },
+  { name: 'Fernanda Lima',       role: 'Gestora de Pet Shop · 6 funcionários',                avatarBg: 'linear-gradient(135deg,#22d3ee,#0e7490)', text: 'Antes eu usava 3 planilhas diferentes. Hoje é um sistema só: agenda, estoque de remdios e caixa. A equipe adorou e o caos acabou.' },
+  { name: 'Dr. Bruno Santos',    role: 'Veterinário Autonômo · Atendimento domiciliar',       avatarBg: 'linear-gradient(135deg,#38bdf8,#0284c7)', text: 'Trabalho sozinho e precisava de algo simples. Configuro o celular antes de entrar na casa do cliente e o prontuário fica salvo.' },
+  { name: 'Juliana Melo',        role: 'Proprietária · Clínica e Petshop · Curitiba',         avatarBg: 'linear-gradient(135deg,#2dd4bf,#22d3ee)', text: 'Minha recepcionista tem 50 anos e nunca tinha usado sistema. Aprendeu em 1 dia. A interface é realmente simples.' },
+  { name: 'Patricia Alves',      role: 'Veterinária · Banho & Tosa · Porto Alegre',             avatarBg: 'linear-gradient(135deg,#34d399,#0ea5e9)', text: 'O financeiro me salvou. Eu não sabia quanto ganhava por mês de verdade. Agora sei o lucro de cada serviço.' },
+  { name: 'Renata Costa',        role: 'Clínica Movel Veterinária · Brasília',                  avatarBg: 'linear-gradient(135deg,#fbbf24,#0284c7)', text: 'Testei VetSmart e PetHub antes. Esse é o único que funciona no celular de verdade. Rápido, bonito e não trava.' },
 ]
 
 const plans = [
   {
-    name: 'Essencial', price: 'R$97', period: '/mês', featured: false,
+    name: '🐾 Básico', price: 'R$97', period: '/mês', featured: false,
     desc: 'Para quem está começando',
-    cta: 'Começar agora',
-    items: ['Até 1 usuário', 'Agendamentos ilimitados', 'Até 50 tutores', 'Cadastro de animais', 'Atividades da equipe', 'Suporte por e-mail'],
+    cta: 'Testar 7 dias grátis',
+    url: '/login?tab=register',
+    items: [
+      'Até 100 tutores/clientes',
+      'Até 150 animais cadastrados',
+      'Até 3 funcionários',
+      'Até 200 agendamentos/mês',
+      'Todas as funcionalidades',
+      'Suporte por e-mail',
+    ],
   },
   {
-    name: 'Pro', price: 'R$197', period: '/mês', featured: true,
+    name: '🏥 Clínica', price: 'R$197', period: '/mês', featured: true,
     desc: 'Para clínicas em crescimento',
-    cta: 'Assinar Pro',
-    items: ['Usuários ilimitados', 'Tutores e animais ilimitados', 'Todos os módulos', 'Personalização de marca', 'Financeiro completo', 'Suporte WhatsApp'],
+    cta: 'Testar 7 dias grátis',
+    url: '/login?tab=register',
+    items: [
+      'Até 200 tutores/clientes',
+      'Até 300 animais cadastrados',
+      'Até 10 funcionários',
+      'Até 1.000 agendamentos/mês',
+      'Todas as funcionalidades',
+      'Suporte e-mail + chat + migração',
+    ],
   },
   {
-    name: 'Elite', price: 'R$297', period: '/mês', featured: false,
+    name: '🏆 Rede', price: 'R$347', period: '/mês', featured: false,
     desc: 'Para redes e franquias veterinárias',
     cta: 'Falar com a gente',
-    items: ['Multi-unidade', 'Relatórios avançados', 'Integrações via API', 'Gerente dedicado', 'Onboarding personalizado', 'SLA garantido'],
+    url: 'https://wa.me/5511940527609?text=Quero+assinar+o+plano+Rede+do+VetFlow',
+    items: [
+      'Tutores e animais ilimitados',
+      'Funcionários ilimitados',
+      'Agendamentos ilimitados',
+      'Todas as funcionalidades',
+      'Suporte prioritário via WhatsApp',
+      'Onboarding + migração personalizada',
+    ],
   },
 ]
 
 const faqs = [
-  { q: 'Preciso instalar alguma coisa?',            a: 'Não! O sistema é 100% online, funciona em qualquer celular ou computador, sem instalação.' },
-  { q: 'Meus dados ficam seguros?',                 a: 'Sim. Cada clínica tem seus dados completamente isolados. Usamos criptografia e backups automáticos.' },
-  { q: 'Posso cancelar quando quiser?',             a: 'Sim, sem fidelidade e sem multa. Cancele quando quiser pelo painel ou pelo WhatsApp de suporte.' },
-  { q: 'Quantos usuários posso adicionar?',         a: 'No plano Essencial o acesso é para 1 usuário. No Pro e Elite, adicione toda a equipe sem limite.' },
-  { q: 'Funciona para mais de uma espécie animal?', a: 'Sim! Cadastre cães, gatos, pássaros, répteis e outros animais com informações específicas de cada um.' },
-  { q: 'Tem app para celular?',                     a: 'A plataforma é totalmente responsiva no celular pelo navegador. Um app nativo está a caminho!' },
+  { q: 'Minha recepcionista não tem experiência com sistema. Vai funcionar?', a: 'Sim! A interface foi desenhada para ser intuitiva. A maioria das recepcionistas após a configuração aprende a usar o sistema em menos de 1 hora, sem treinamento.' },
+  { q: 'O prontuário digital é aceito pelo CFMV?',                           a: 'O sistema armazena todos os dados clínicos exigidos pelo CFMV. Recomendamos consultar a norma do seu estado, mas o prontuário digital é amplamente aceito quando contém as informações obrigatórias.' },
+  { q: 'Consigo migrar os dados que já tenho em planilha?',                  a: 'Sim. Nossa equipe de suporte ajuda na migração dos dados principais (clientes, animais e prontuários) sem custo adicional no plano Clínica e Rede.' },
+  { q: 'Funciona para mais de uma espécie animal?',                          a: 'Sim! Cães, gatos, pássaros, répteis e exóticos. Cadastre com raça, peso, espécie e observações específicas de cada animal.' },
+  { q: 'Preciso instalar alguma coisa?',                                      a: 'Não! 100% online, funciona em qualquer celular ou computador com internet, sem instalação.' },
+  { q: 'Posso cancelar quando quiser?',                                       a: 'Sim, sem fidelidade e sem multa. Cancele quando quiser pelo painel ou pelo WhatsApp de suporte. Seus dados ficam disponíveis por 30 dias após o cancelamento.' },
 ]
 </script>
 

@@ -10,6 +10,10 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   app: {
     head: {
+      title: 'VetFlow',
+      meta: [
+        { name: 'description', content: 'VetFlow — Sistema de gestão veterinária completo. Agenda, prontuário digital, financeiro e equipe em um só lugar.' },
+      ],
       script: [
         {
           // Restaura tema do localStorage antes do primeiro render — elimina flash de cor

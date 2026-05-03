@@ -10,14 +10,16 @@
     <div class="px-4 py-5 border-b flex items-center gap-3 overflow-hidden" :style="{ borderColor: 'var(--color-primary-border, rgba(255,255,255,0.15))' }">
       <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(255,255,255,0.15)">
         <img v-if="config.logo_url" :src="config.logo_url" alt="Logo" class="w-6 h-6 object-contain rounded-lg" />
-        <AppNavIcon v-else name="sparkles" class="w-4 h-4" :style="{ color: 'var(--color-primary-text, #ffffff)' }" />
+        <svg v-else class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" :style="{ color: 'var(--color-primary-text, #ffffff)' }">
+          <path d="M12 2C10.34 2 9 3.34 9 5s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM5.5 6C4.12 6 3 7.12 3 8.5S4.12 11 5.5 11 8 9.88 8 8.5 6.88 6 5.5 6zm13 0C17.12 6 16 7.12 16 8.5S17.12 11 18.5 11 21 9.88 21 8.5 19.88 6 18.5 6zM12 10c-3.5 0-7 3-7 6.5 0 2.5 3 4.5 7 4.5s7-2 7-4.5c0-3.5-3.5-6.5-7-6.5z"/>
+        </svg>
       </div>
       <p
         class="text-sm font-black uppercase tracking-widest whitespace-nowrap transition-opacity duration-200"
         :class="expanded ? 'opacity-100' : 'opacity-0'"
         :style="{ color: 'var(--color-primary-text, #ffffff)' }"
       >
-        {{ config.nome_empresa }}
+        {{ config.nome_empresa || 'VetFlow' }}
       </p>
     </div>
 

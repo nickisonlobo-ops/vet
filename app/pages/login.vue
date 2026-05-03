@@ -127,6 +127,7 @@ import LoginForm from '~/components/LoginForm.vue'
 
 definePageMeta({ layout: false })
 
+const route = useRoute()
 const showIntro = ref(true)
 const initialTab = ref<'login' | 'register'>('register')
 
@@ -134,6 +135,14 @@ function goTo(tab: 'login' | 'register') {
   initialTab.value = tab
   showIntro.value = false
 }
+
+// Se vier da landing com ?tab=register ou ?tab=login, pula o intro
+onMounted(() => {
+  const tab = route.query.tab as string | undefined
+  if (tab === 'register' || tab === 'login') {
+    goTo(tab)
+  }
+})
 
 const benefits = [
   { emoji: '📅', text: 'Agendamento online' },

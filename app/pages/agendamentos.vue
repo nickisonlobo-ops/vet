@@ -294,13 +294,18 @@
                 @dragend="kanbanDragEnd"
                 @click="ag.status !== 'solicitado' && editAgendamento(ag)"
               >
-                <div class="h-0.5 w-full rounded-full mb-2" :class="statusCor(ag.status)" />
+                <div class="h-1 w-full rounded-full mb-2" :class="statusCor(ag.status)" />
+                <div class="flex items-center justify-between gap-1 mb-1">
+                  <p class="text-[11px] font-black leading-none text-[#ff46a2]">{{ formatHora(ag.data_hora) }}</p>
+                  <span class="inline-flex items-center rounded-full px-1.5 py-0.5 text-[8px] font-bold leading-none" :class="statusBadge(ag.status)">{{ statusLabel(ag.status) }}</span>
+                </div>
                 <p class="text-xs font-bold text-gray-900 truncate leading-tight">{{ ag.cliente_nome ?? ag.nome_solicitante ?? '\u2014' }}</p>
-                <p class="text-[10px] font-semibold text-[#ff46a2] mt-0.5">{{ formatHora(ag.data_hora) }}</p>
-                <p v-if="ag.servicos_nomes" class="text-[10px] text-gray-400 mt-0.5 truncate">{{ ag.servicos_nomes }}</p>
-                <p v-if="ag.funcionario_nome" class="text-[10px] text-indigo-500 font-semibold mt-0.5 truncate">👤 {{ ag.funcionario_nome }}</p>
-                <span class="inline-flex mt-1.5 items-center rounded-full px-1.5 py-0.5 text-[9px] font-semibold" :class="statusBadge(ag.status)">{{ statusLabel(ag.status) }}</span>
-                <div v-if="ag.status === 'solicitado'" class="flex gap-1 mt-1.5">
+                <p v-if="(ag as any).animal_nome" class="text-[10px] font-semibold text-pink-500 leading-tight truncate">🐾 {{ (ag as any).animal_nome }}</p>
+                <div v-if="ag.servicos_nomes || ag.funcionario_nome" class="mt-1.5 pt-1 border-t border-gray-100 space-y-0.5">
+                  <p v-if="ag.servicos_nomes" class="text-[10px] text-gray-400 truncate">{{ ag.servicos_nomes }}</p>
+                  <p v-if="ag.funcionario_nome" class="text-[10px] text-indigo-500 font-semibold truncate">👤 {{ ag.funcionario_nome }}</p>
+                </div>
+                <div v-if="ag.status === 'solicitado'" class="flex gap-1 mt-2">
                   <button type="button" class="flex-1 py-1 rounded-lg bg-green-500 text-white text-[9px] font-bold hover:bg-green-600 transition-colors" @click.stop="aprovarSolicitacao(ag)">✓</button>
                   <button type="button" class="flex-1 py-1 rounded-lg bg-red-400 text-white text-[9px] font-bold hover:bg-red-500 transition-colors" @click.stop="recusarSolicitacao(ag)">✗</button>
                 </div>
@@ -309,7 +314,7 @@
                   :href="`https://wa.me/55${ag.cliente_telefone.replace(/\D/g, '')}`"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="mt-1.5 flex items-center justify-center w-full py-1 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors"
+                  class="mt-2 flex items-center justify-center w-full py-1.5 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors"
                   @click.stop
                 >
                   <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -357,13 +362,18 @@
                 @dragend="kanbanDragEnd"
                 @click="ag.status !== 'solicitado' && editAgendamento(ag)"
               >
-                <div class="h-0.5 w-full rounded-full mb-2" :class="statusCor(ag.status)" />
+                <div class="h-1 w-full rounded-full mb-2" :class="statusCor(ag.status)" />
+                <div class="flex items-center justify-between gap-1 mb-1">
+                  <p class="text-[11px] font-black leading-none text-[#ff46a2]">{{ formatHora(ag.data_hora) }}</p>
+                  <span class="inline-flex items-center rounded-full px-1.5 py-0.5 text-[8px] font-bold leading-none" :class="statusBadge(ag.status)">{{ statusLabel(ag.status) }}</span>
+                </div>
                 <p class="text-xs font-bold text-gray-900 truncate leading-tight">{{ ag.cliente_nome ?? ag.nome_solicitante ?? '\u2014' }}</p>
-                <p class="text-[10px] font-semibold text-[#ff46a2] mt-0.5">{{ formatHora(ag.data_hora) }}</p>
-                <p v-if="ag.servicos_nomes" class="text-[10px] text-gray-400 mt-0.5 truncate">{{ ag.servicos_nomes }}</p>
-                <p v-if="ag.funcionario_nome" class="text-[10px] text-indigo-500 font-semibold mt-0.5 truncate">👤 {{ ag.funcionario_nome }}</p>
-                <span class="inline-flex mt-1.5 items-center rounded-full px-1.5 py-0.5 text-[9px] font-semibold" :class="statusBadge(ag.status)">{{ statusLabel(ag.status) }}</span>
-                <div v-if="ag.status === 'solicitado'" class="flex gap-1 mt-1.5">
+                <p v-if="(ag as any).animal_nome" class="text-[10px] font-semibold text-pink-500 leading-tight truncate">🐾 {{ (ag as any).animal_nome }}</p>
+                <div v-if="ag.servicos_nomes || ag.funcionario_nome" class="mt-1.5 pt-1 border-t border-gray-100 space-y-0.5">
+                  <p v-if="ag.servicos_nomes" class="text-[10px] text-gray-400 truncate">{{ ag.servicos_nomes }}</p>
+                  <p v-if="ag.funcionario_nome" class="text-[10px] text-indigo-500 font-semibold truncate">👤 {{ ag.funcionario_nome }}</p>
+                </div>
+                <div v-if="ag.status === 'solicitado'" class="flex gap-1 mt-2">
                   <button type="button" class="flex-1 py-1 rounded-lg bg-green-500 text-white text-[9px] font-bold hover:bg-green-600 transition-colors" @click.stop="aprovarSolicitacao(ag)">✓</button>
                   <button type="button" class="flex-1 py-1 rounded-lg bg-red-400 text-white text-[9px] font-bold hover:bg-red-500 transition-colors" @click.stop="recusarSolicitacao(ag)">✗</button>
                 </div>
@@ -372,7 +382,7 @@
                   :href="`https://wa.me/55${ag.cliente_telefone.replace(/\D/g, '')}`"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="mt-1.5 flex items-center justify-center w-full py-1 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors"
+                  class="mt-2 flex items-center justify-center w-full py-1.5 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors"
                   @click.stop
                 >
                   <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -423,12 +433,17 @@
               @dragend="kanbanDragEnd"
               @click="ag.status !== 'solicitado' && editAgendamento(ag)"
             >
-              <div class="h-0.5 w-full rounded-full mb-2" :class="statusCor(ag.status)" />
+              <div class="h-1 w-full rounded-full mb-2" :class="statusCor(ag.status)" />
+              <div class="flex items-center justify-between gap-1 mb-1">
+                <p class="text-[11px] font-black leading-none text-[#ff46a2]">{{ formatHora(ag.data_hora) }}</p>
+                <span class="inline-flex items-center rounded-full px-1.5 py-0.5 text-[8px] font-bold leading-none" :class="statusBadge(ag.status)">{{ statusLabel(ag.status) }}</span>
+              </div>
               <p class="text-xs font-bold text-gray-900 truncate leading-tight">{{ ag.cliente_nome ?? ag.nome_solicitante ?? '\u2014' }}</p>
-              <p class="text-[10px] font-semibold text-[#ff46a2] mt-0.5">{{ formatHora(ag.data_hora) }}</p>
-              <p v-if="ag.servicos_nomes" class="text-[10px] text-gray-400 mt-0.5 truncate">{{ ag.servicos_nomes }}</p>
-              <p v-if="ag.funcionario_nome" class="text-[10px] text-indigo-500 font-semibold mt-0.5 truncate">👤 {{ ag.funcionario_nome }}</p>
-              <span class="inline-flex mt-1.5 items-center rounded-full px-1.5 py-0.5 text-[9px] font-semibold" :class="statusBadge(ag.status)">{{ statusLabel(ag.status) }}</span>
+              <p v-if="(ag as any).animal_nome" class="text-[10px] font-semibold text-pink-500 leading-tight truncate">🐾 {{ (ag as any).animal_nome }}</p>
+              <div v-if="ag.servicos_nomes || ag.funcionario_nome" class="mt-1.5 pt-1 border-t border-gray-100 space-y-0.5">
+                <p v-if="ag.servicos_nomes" class="text-[10px] text-gray-400 truncate">{{ ag.servicos_nomes }}</p>
+                <p v-if="ag.funcionario_nome" class="text-[10px] text-indigo-500 font-semibold truncate">👤 {{ ag.funcionario_nome }}</p>
+              </div>
               <div v-if="ag.status === 'solicitado'" class="flex gap-1.5 mt-2">
                 <button type="button" class="flex-1 py-1.5 rounded-lg bg-green-500 text-white text-[10px] font-bold hover:bg-green-600 transition-colors" @click.stop="aprovarSolicitacao(ag)">✓ Aprovar</button>
                 <button type="button" class="flex-1 py-1.5 rounded-lg bg-red-400 text-white text-[10px] font-bold hover:bg-red-500 transition-colors" @click.stop="recusarSolicitacao(ag)">✗ Recusar</button>
@@ -1117,6 +1132,7 @@ interface AgendamentoRow {
   cliente_telefone?: string | null
   funcionario_nome?: string | null
   servicos_nomes?: string | null
+  animal_nome?: string | null
 }
 
 interface ClienteOption { id: number; nome: string }
@@ -1599,15 +1615,15 @@ async function fetchAgendamentos(silent = false) {
   // Fetch agendamentos — join profiles pelo FK para pegar o email do profissional
   const { data: rows, error: fetchError } = await supabase
     .from('agendamentos')
-    .select('*, clientes(nome, telefone), profiles!agendamentos_funcionario_id_fkey(email)')
+    .select('*, clientes(nome, telefone), animais(nome)')
     .eq('empresa_id', empresaId.value!)
     .order('data_hora', { ascending: false })
 
   if (fetchError) { error.value = fetchError.message; if (!silent) loading.value = false; return }
 
-  // Mapa email → nome usando funcionarios já carregados
-  const funcNomeByEmail: Record<string, string> = {}
-  funcionarios.value.forEach(f => { if (f.email) funcNomeByEmail[f.email.toLowerCase()] = f.nome ?? '' })
+  // Mapa profile_id → nome usando funcionarios já carregados
+  const funcNomeByProfileId: Record<string, string> = {}
+  funcionarios.value.forEach(f => { if (f.profile_id) funcNomeByProfileId[f.profile_id] = f.nome ?? '' })
 
   // Fetch servicos vinculados
   const ids = (rows ?? []).map(r => r.id)
@@ -1628,10 +1644,9 @@ async function fetchAgendamentos(silent = false) {
     ...r,
     cliente_nome:     r.clientes?.nome ?? null,
     cliente_telefone: r.clientes?.telefone ?? null,
-    funcionario_nome: r.profiles?.email
-      ? (funcNomeByEmail[r.profiles.email.toLowerCase()] ?? null)
-      : null,
+    funcionario_nome: r.funcionario_id ? (funcNomeByProfileId[r.funcionario_id] ?? null) : null,
     servicos_nomes:   (servicosMap[r.id] ?? []).join(', ') || null,
+    animal_nome:      r.animais?.nome ?? null,
     nome_solicitante: r.nome_solicitante ?? null,
     telefone_solicitante: r.telefone_solicitante ?? null,
   }))

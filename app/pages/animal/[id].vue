@@ -344,7 +344,7 @@ const prontuarios = ref<ProntuarioData[]>([])
 const agendamentos = ref<AgendamentoData[]>([])
 const loading     = ref(true)
 
-const clinicaNome = computed(() => tema.value.nome_empresa || 'Clínica Veterinária')
+const clinicaNome = computed(() => tema.value.nome_empresa || 'VetFlow')
 const animalId    = computed(() => Number(route.params.id))
 
 // ── Computed ──────────────────────────────────────────────────

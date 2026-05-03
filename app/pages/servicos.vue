@@ -79,9 +79,12 @@
         <label class="block text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1.5">Categoria</label>
         <select v-model="filtro.categoria" class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-400">
           <option value="">Todas</option>
-          <option value="cilios">Cílios</option>
-          <option value="unhas">Unhas</option>
-          <option value="combo">Combo</option>
+          <option value="consulta">Consulta / Clínica</option>
+          <option value="vacina">Vacinação</option>
+          <option value="cirurgia">Cirurgia</option>
+          <option value="exame">Exames</option>
+          <option value="estetica">Estética / Grooming</option>
+          <option value="internacao">Internação</option>
           <option value="outro">Outro</option>
         </select>
       </div>
@@ -273,9 +276,12 @@
                   class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary,#6b7280)] focus:border-[var(--color-primary,#6b7280)]"
                 >
                   <option value="" disabled>Selecione</option>
-                  <option value="cilios">Cílios</option>
-                  <option value="unhas">Unhas</option>
-                  <option value="combo">Combo</option>
+                  <option value="consulta">Consulta / Clínica</option>
+                  <option value="vacina">Vacinação</option>
+                  <option value="cirurgia">Cirurgia</option>
+                  <option value="exame">Exames</option>
+                  <option value="estetica">Estética / Grooming</option>
+                  <option value="internacao">Internação</option>
                   <option value="outro">Outro</option>
                 </select>
               </div>
@@ -365,7 +371,7 @@
                 Pode ser feito junto com
                 <span class="text-[10px] font-normal text-gray-400 normal-case tracking-normal ml-1">(simultâneo)</span>
               </label>
-              <p class="text-xs text-gray-400 mb-2">Marque serviços que podem ser realizados ao mesmo tempo que este — ex: cabelo + unhas.</p>
+              <p class="text-xs text-gray-400 mb-2">Marque serviços que podem ser realizados ao mesmo tempo que este — ex: consulta + exame.</p>
               <div v-if="outrosServicos.length === 0" class="text-xs text-gray-400 py-2">Nenhum outro serviço ativo cadastrado.</div>
               <div v-else class="flex flex-col gap-1.5 max-h-36 overflow-y-auto pr-1">
                 <label
@@ -512,37 +518,62 @@ function formatPreco(v: number) {
 }
 
 function categoriaLabel(cat: string) {
-  return { cilios: 'Cílios', unhas: 'Unhas', combo: 'Combo', outro: 'Outro' }[cat] ?? cat
+  return {
+    consulta:   'Consulta',
+    vacina:     'Vacinação',
+    cirurgia:   'Cirurgia',
+    exame:      'Exames',
+    estetica:   'Estética',
+    internacao: 'Internação',
+    outro:      'Outro',
+  }[cat] ?? cat
 }
 
 function categoriaCor(cat: string) {
-  return { cilios: 'bg-pink-500', unhas: 'bg-purple-500', combo: 'bg-indigo-500', outro: 'bg-gray-400' }[cat] ?? 'bg-gray-300'
+  return {
+    consulta:   'bg-sky-500',
+    vacina:     'bg-emerald-500',
+    cirurgia:   'bg-red-500',
+    exame:      'bg-violet-500',
+    estetica:   'bg-pink-500',
+    internacao: 'bg-amber-500',
+    outro:      'bg-gray-400',
+  }[cat] ?? 'bg-gray-300'
 }
 
 function categoriaBadge(cat: string) {
   return {
-    cilios: 'bg-pink-100 text-pink-700',
-    unhas: 'bg-purple-100 text-purple-700',
-    combo: 'bg-indigo-100 text-indigo-700',
-    outro: 'bg-gray-100 text-gray-600',
+    consulta:   'bg-sky-100 text-sky-700',
+    vacina:     'bg-emerald-100 text-emerald-700',
+    cirurgia:   'bg-red-100 text-red-700',
+    exame:      'bg-violet-100 text-violet-700',
+    estetica:   'bg-pink-100 text-pink-700',
+    internacao: 'bg-amber-100 text-amber-700',
+    outro:      'bg-gray-100 text-gray-600',
   }[cat] ?? 'bg-gray-100 text-gray-600'
 }
 
 function categoriaGradient(cat: string) {
   return {
-    cilios: 'bg-gradient-to-br from-pink-400 to-rose-500',
-    unhas: 'bg-gradient-to-br from-purple-400 to-violet-500',
-    combo: 'bg-gradient-to-br from-indigo-400 to-blue-500',
-    outro: 'bg-gradient-to-br from-gray-400 to-slate-500',
+    consulta:   'bg-gradient-to-br from-sky-400 to-cyan-500',
+    vacina:     'bg-gradient-to-br from-emerald-400 to-teal-500',
+    cirurgia:   'bg-gradient-to-br from-red-400 to-rose-500',
+    exame:      'bg-gradient-to-br from-violet-400 to-purple-500',
+    estetica:   'bg-gradient-to-br from-pink-400 to-fuchsia-500',
+    internacao: 'bg-gradient-to-br from-amber-400 to-orange-500',
+    outro:      'bg-gradient-to-br from-gray-400 to-slate-500',
   }[cat] ?? 'bg-gradient-to-br from-gray-400 to-slate-500'
 }
 
 function categoriaBadgeOverlay(cat: string) {
   return {
-    cilios: 'bg-pink-500/80 text-white',
-    unhas: 'bg-purple-500/80 text-white',
-    combo: 'bg-indigo-500/80 text-white',
-    outro: 'bg-gray-500/80 text-white',
+    consulta:   'bg-sky-500/80 text-white',
+    vacina:     'bg-emerald-500/80 text-white',
+    cirurgia:   'bg-red-500/80 text-white',
+    exame:      'bg-violet-500/80 text-white',
+    estetica:   'bg-pink-500/80 text-white',
+    internacao: 'bg-amber-500/80 text-white',
+    outro:      'bg-gray-500/80 text-white',
   }[cat] ?? 'bg-gray-500/80 text-white'
 }
 

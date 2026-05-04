@@ -37,6 +37,7 @@ const allNavItems = [
   { to: '/estoque',       icon: 'package',        label: 'Estoque',     minPerfil: 'all' },
   { to: '/funcionarios',  icon: 'users',          label: 'Equipe',      minPerfil: 'manager' },
   { to: '/atividades',    icon: 'clipboard',      label: 'Atividades',  minPerfil: 'all' },
+  { to: '/financeiro',    icon: 'chart-bar',      label: 'Financeiro',  minPerfil: 'manager' },
   { to: '/contas-pagar',  icon: 'wallet',         label: 'Contas',      minPerfil: 'manager' },
   { to: '/configuracoes', icon: 'settings',       label: 'Config',      minPerfil: 'manager' },
 ]

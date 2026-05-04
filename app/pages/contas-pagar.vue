@@ -728,7 +728,22 @@ async function fetchContas(silent = false) {
 
   if (!silent) loading.value = false
   if (fetchError) { error.value = fetchError.message; return }
-  contas.value = (data ?? []) as ContaPagar[]
+
+  const hoje = new Date().toISOString().slice(0, 10)
+  const contasRaw = (data ?? []) as ContaPagar[]
+
+  // Atualizar status automaticamente para vencido se necessário
+  for (const conta of contasRaw) {
+    if (conta.status !== 'pago' && conta.data_vencimento < hoje) {
+      await supabase
+        .from('contas_pagar')
+        .update({ status: 'vencido' })
+        .eq('id', conta.id)
+      conta.status = 'vencido'
+    }
+  }
+
+  contas.value = contasRaw
 }
 
 async function mudarStatus(conta: ContaPagar, novoStatus: string) {

@@ -1,7 +1,7 @@
 import { createSupabaseClient } from '~/lib/supabase'
 
 // Rotas bloqueadas para funcionario (somente admin/gerente)
-const MANAGER_ROUTES = ['/contas-pagar', '/produtos', '/funcionarios']
+const MANAGER_ROUTES = ['/financeiro', '/contas-pagar', '/produtos', '/funcionarios']
 // Rotas públicas (sem login)
 const PUBLIC_ROUTES = ['/catalogo', '/loja', '/agendar', '/landing', '/animal']
 // Rota de bloqueio (não redirecionar em loop)
